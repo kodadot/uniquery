@@ -1,0 +1,45 @@
+{
+  "name": "@kodadot1/uniquery",
+  "version": "0.1.0-rc.0",
+  "description": "",
+  "repository": "kodadot/uniquery",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "vitest dev",
+    "lint": "eslint --ext .ts,.js,.mjs,.cjs .",
+    "prepack": "unbuild",
+    "release": "yarn test && standard-version && git push --follow-tags && npm publish",
+    "test": "vitest run --dir test"
+  },
+  "dependencies": {
+    "@kodadot1/vuex-options": "^0.0.3-rc.10",
+    "gql-query-builder": "^3.7.2",
+    "ohmyfetch": "^0.4.20",
+    "scule": "^0.3.2",
+    "ufo": "^0.8.6"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "latest",
+    "c8": "latest",
+    "eslint": "latest",
+    "standard-version": "latest",
+    "typescript": "latest",
+    "unbuild": "latest",
+    "vitest": "latest"
+  }
+}
