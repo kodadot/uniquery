@@ -7,6 +7,9 @@
 
 > GraphQL builder for KodaDot API
 
+![image](https://user-images.githubusercontent.com/5887929/217076647-3edd6aef-5b18-42e6-9a35-8bd2cf7c1ad6.png)
+
+
 ## Usage
 
 Add Uniquery to your project
