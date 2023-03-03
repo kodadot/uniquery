@@ -1,6 +1,6 @@
 import { $URL, withoutLeadingSlash } from 'ufo'
 import getClient from '../clients/factory'
-import { GraphQuery } from '../types'
+import { GraphQuery, QueryProps } from '../types'
 import { getUrl } from './indexers'
 import { ClientCall, GraphRequest, Prefix } from './types'
 
@@ -33,7 +33,7 @@ const supportChain = (chain: string | undefined): boolean => {
 }
 
 const urlOf = (path: string): $URL => new $URL(path)
-const makeQuery = (call: string, id: string): GraphQuery => {
+const makeQuery = (call: string, id: string, options?: QueryProps<any>): GraphQuery => {
   const client = getClient()
   const method = getCall(call)
   const fn: any | undefined = client[method]
@@ -41,12 +41,12 @@ const makeQuery = (call: string, id: string): GraphQuery => {
     throw new ReferenceError(`[UNIQUERY::REST] Unable to make call: ${call}`)
   }
 
-  return fn(id)
+  return fn(id, options)
 }
 
 // /bsx/nft/:id
 // TODO: should return GraphRequest
-export function pathToRequest(path: string): GraphRequest {
+export function pathToRequest(path: string, options?: QueryProps<any>): GraphRequest {
   const { pathname } = urlOf(path) // query: options
   const [chain, call, id] = parsePath(pathname)
   if (!hasCall(call) || !supportChain(chain)) {
@@ -54,7 +54,7 @@ export function pathToRequest(path: string): GraphRequest {
   }
 
   const baseURL = getUrl(chain as Prefix)
-  const graphQuery = makeQuery(call, id)
+  const graphQuery = makeQuery(call, id, options)
 
   return { baseURL, query: graphQuery, path }
   // const [chain, call, param] = path.split('/').filter(Boolean)
