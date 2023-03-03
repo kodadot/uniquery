@@ -10,15 +10,15 @@ const pathMap: Record<string, ClientCall> = {
   collectionByIssuer: 'collectionListByIssuer',
   eventByAddress: 'eventListByAddress',
   eventByInteraction: 'eventListByInteraction',
-  eventByNftId: 'eventListByNftId',
-  nft: 'nftById',
-  nftByCollection: 'nftListByCollectionId',
-  nftByCollectionList: 'nftListByCollectionIdList',
-  nftByIssuer: 'nftListByIssuer',
-  nftByCid: 'nftListByMetadataIdMatch',
-  nftByOwner: 'nftListByOwner',
-  nftCollectedBy: 'nftListCollectedBy',
-  nftSoldBy: 'nftListSoldBy'
+  eventByItemId: 'eventListByItemId',
+  item: 'itemById',
+  itemByCollection: 'itemListByCollectionId',
+  itemByCollectionList: 'itemListByCollectionIdList',
+  itemByIssuer: 'itemListByIssuer',
+  itemByCid: 'itemListByMetadataIdMatch',
+  itemByOwner: 'itemListByOwner',
+  itemCollectedBy: 'itemListCollectedBy',
+  itemSoldBy: 'itemListSoldBy'
 }
 
 export const parsePath = (pathname: string): string[] => {
@@ -44,7 +44,7 @@ const makeQuery = (call: string, id: string, options?: QueryProps<any>): GraphQu
   return fn(id, options)
 }
 
-// /bsx/nft/:id
+// /bsx/item/:id
 // TODO: should return GraphRequest
 export function pathToRequest(path: string, options?: QueryProps<any>): GraphRequest {
   const { pathname } = urlOf(path) // query: options
