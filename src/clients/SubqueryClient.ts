@@ -7,40 +7,40 @@ import AbstractClient from './abstractClient'
 import { getFields, optionToQuery, wrapSubqueryList } from './defaults'
 
 class SubqueryClient implements AbstractClient<BaseCollection, BaseNFT> {
-  nftById(id: string, fields?: ObjProp<BaseNFT>): GraphQuery {
+  itemById(id: string, fields?: ObjProp<BaseNFT>): GraphQuery {
     const toQuery = getFields(fields)
-    return build('nft: nFTEntity', toQuery, { id: { type: 'String', required: true, value: id, name: 'id' } })
+    return build('item: nFTEntity', toQuery, { id: { type: 'String', required: true, value: id, name: 'id' } })
   }
 
-  nftListByOwner(owner: string, options?: QueryProps<BaseNFT>): GraphQuery {
+  itemListByOwner(owner: string, options?: QueryProps<BaseNFT>): GraphQuery {
     const toQuery = wrapSubqueryList(getFields(options?.fields))
-    return build(`nfts: nFTEntities(filter: { currentOwner: { equalTo: ${owner} } })`, toQuery)
+    return build(`items: nFTEntities(filter: { currentOwner: { equalTo: ${owner} } })`, toQuery)
   }
 
-  nftListByIssuer(issuer: string, options?: QueryProps<BaseNFT>): GraphQuery {
+  itemListByIssuer(issuer: string, options?: QueryProps<BaseNFT>): GraphQuery {
     const toQuery = wrapSubqueryList(getFields(options?.fields))
-    return build(`nfts: nFTEntities(filter: { issuer: { equalTo: ${issuer} } })`, toQuery)
+    return build(`items: nFTEntities(filter: { issuer: { equalTo: ${issuer} } })`, toQuery)
   }
 
-  nftListCollectedBy(address: string, options?: QueryProps<BaseNFT>): GraphQuery {
+  itemListCollectedBy(address: string, options?: QueryProps<BaseNFT>): GraphQuery {
     const toQuery = wrapSubqueryList(getFields(options?.fields))
-    return build(`nfts: nFTEntities(filter: { issuer: { notEqualTo: ${address} } currentOwner: { equalTo: ${address} } burned: { distinctFrom: true } })`, toQuery)
+    return build(`items: nFTEntities(filter: { issuer: { notEqualTo: ${address} } currentOwner: { equalTo: ${address} } burned: { distinctFrom: true } })`, toQuery)
   }
 
-  nftListSoldBy(address: string, options?: QueryProps<BaseNFT>): GraphQuery {
+  itemListSoldBy(address: string, options?: QueryProps<BaseNFT>): GraphQuery {
     const toQuery = wrapSubqueryList(getFields(options?.fields))
-    return build(`nfts: nFTEntities(filter: { issuer: { equalTo: ${address} } currentOwner: { notEqualTo: ${address} } burned: { distinctFrom: true } })`, toQuery)
+    return build(`items: nFTEntities(filter: { issuer: { equalTo: ${address} } currentOwner: { notEqualTo: ${address} } burned: { distinctFrom: true } })`, toQuery)
   }
 
-  nftListForSale(options?: QueryProps<BaseNFT>): GraphQuery {
+  itemListForSale(options?: QueryProps<BaseNFT>): GraphQuery {
     const toQuery = wrapSubqueryList(getFields(options?.fields))
     const optionList = optionToQuery(options, true)
-    return build(`nfts: nFTEntities(filter: { price: { greaterThan: "0" } } ) ${optionList}`, toQuery)
+    return build(`items: nFTEntities(filter: { price: { greaterThan: "0" } } ) ${optionList}`, toQuery)
   }
 
-  nftListByCollectionId(collectionId: string, options?: QueryProps<BaseNFT>): GraphQuery {
+  itemListByCollectionId(collectionId: string, options?: QueryProps<BaseNFT>): GraphQuery {
     const toQuery = wrapSubqueryList(getFields(options?.fields))
-    return build(`nfts: nFTEntities(filter: { collectionId: { equalTo: ${collectionId} } })`, toQuery)
+    return build(`items: nFTEntities(filter: { collectionId: { equalTo: ${collectionId} } })`, toQuery)
   }
 
   collectionById(id: string, fields?: ObjProp<BaseCollection>): GraphQuery {
@@ -74,23 +74,23 @@ class SubqueryClient implements AbstractClient<BaseCollection, BaseNFT> {
     throw new Error('Method not implemented.')
   }
 
-  eventListByNftId(id: string, options?: QueryProps<BaseEvent>): GraphQuery {
+  eventListByItemId(id: string, options?: QueryProps<BaseEvent>): GraphQuery {
     throw new Error('Method not implemented.')
   }
 
-  nftListByCollectionIdAndOwner(id: string, owner: string, options?: QueryProps<BaseNFT>): GraphQuery {
+  itemListByCollectionIdAndOwner(id: string, owner: string, options?: QueryProps<BaseNFT>): GraphQuery {
     throw new Error('Method not implemented.')
   }
 
-  nftListByCollectionIdList(ids: string[], options?: QueryProps<BaseNFT>): GraphQuery {
+  itemListByCollectionIdList(ids: string[], options?: QueryProps<BaseNFT>): GraphQuery {
     throw new Error('Method not implemented.')
   }
 
-  nftListByMetadataId(id: string, options?: QueryProps<BaseNFT>): GraphQuery {
+  itemListByMetadataId(id: string, options?: QueryProps<BaseNFT>): GraphQuery {
     throw new Error('Method not implemented.')
   }
 
-  nftListByMetadataIdMatch(id: string, options?: QueryProps<BaseNFT>): GraphQuery {
+  itemListByMetadataIdMatch(id: string, options?: QueryProps<BaseNFT>): GraphQuery {
     throw new Error('Method not implemented.')
   }
 }
