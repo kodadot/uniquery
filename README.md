@@ -55,7 +55,7 @@ As we were onboarding developers for our NFT Gallery, most of the developers hav
 Without Uniquery you would have to write something like this:
 
 ```graphql
-query nftListByCollectionIdList {
+query itemListByCollectionIdList {
   nft: nftEntities(where: {collection: { id_eq: "2305670031" }}) {
     id
     metadata
@@ -70,7 +70,7 @@ With Uniquery you can write this:
 ```js
 const id = '2305670031'
 const client = getClient()
-const query = client.nftListByCollectionId(id)
+const query = client.itemListByCollectionId(id)
 ```
 
 **To be aware every client function returns `GraphQuery` object**
@@ -104,7 +104,7 @@ const result = await $fetch(SUBSQUID_INDEXER_ENDPOINT, {
 ```js
 import { ask } from '@kodadot1/uniquery'
 const id = '2305670031'
-const result = await ask(`/bsx/nftByCollection/${id}`)
+const result = await ask(`/bsx/itemByCollection/${id}`)
 ```
 
 
@@ -130,17 +130,17 @@ From REST:
 - eventListByAddress - returns events by address
 - eventListByInteraction - returns events by interaction
 - eventListByNftId - returns events by nft id
-- nftById - returns NFT by id
-- nftListByCollectionId - returns NFTs where collection id is equal to provided id
-- nftListByCollectionIdAndOwner - returns NFTs where collection id is equal to provided id and owner is equal to provided address
-- nftListByCollectionIdList - return list of NFTs by list of collectionIds
-- nftListByIssuer - returns NFTs where issuer (creator) is equal to provided address
-- nftListByMetadataId - returns NFTs where metadata is equal to provided uri
-- nftListByMetadataIdMatch -returns NFTs where metadata can match provided CID
-- nftListByOwner - returns NFTs where owner is equal to provided address
-- nftListCollectedBy - returns NFTs where owner is equal to provided address however it's not the issuer of the NFT
-- nftListForSale - returns NFTs where price is greater than 0
-- nftListSoldBy - no idea :shrug:
+- itemById - returns NFT by id
+- itemListByCollectionId - returns NFTs where collection id is equal to provided id
+- itemListByCollectionIdAndOwner - returns NFTs where collection id is equal to provided id and owner is equal to provided address
+- itemListByCollectionIdList - return list of NFTs by list of collectionIds
+- itemListByIssuer - returns NFTs where issuer (creator) is equal to provided address
+- itemListByMetadataId - returns NFTs where metadata is equal to provided uri
+- itemListByMetadataIdMatch -returns NFTs where metadata can match provided CID
+- itemListByOwner - returns NFTs where owner is equal to provided address
+- itemListCollectedBy - returns NFTs where owner is equal to provided address however it's not the issuer of the NFT
+- itemListForSale - returns NFTs where price is greater than 0
+- itemListSoldBy - no idea :shrug:
 
 ### ✔️  REST
 
@@ -150,14 +150,14 @@ From REST:
 - eventByAddress/:address
 - eventByInteraction/:interaction
 - eventByNftId/:id
-- nft/:id
-- nftByCollection/:id
-- nftByCollectionList/:ids
-- nftByIssuer/:issuer
-- nftByCid/:id
-- nftByOwner/:owner
-- nftCollectedBy/:address
-- nftSoldBy/:address
+- item/:id
+- itemByCollection/:id
+- itemByCollectionList/:ids
+- itemByIssuer/:issuer
+- itemByCid/:id
+- itemByOwner/:owner
+- itemCollectedBy/:address
+- itemSoldBy/:address
 
 #### ⚠️ Caveats
 
