@@ -1,6 +1,6 @@
-import { ObjProp, Fields, QueryOptions, BaseEvent } from '../types'
+import { ObjProp, Fields, QueryOptions, BaseEvent, AbstractBase } from '../types'
 
-export const defaultField = ['id', 'metadata', 'currentOwner', 'issuer']
+export const defaultField: ObjProp<AbstractBase> = ['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer']
 export const defaultEventField: ObjProp<BaseEvent> = ['id', 'interaction', 'timestamp', 'caller', 'meta']
 export const DEFAULT_LIMIT = 20
 // todo: add default orderBy
