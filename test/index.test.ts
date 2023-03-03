@@ -5,12 +5,12 @@ describe('KODAPI UTILS', () => {
   describe('getURL', () => {
     it('should return default kusama indexer', () => {
       const url = getUrl('kusama')
-      expect(url).eq('https://squid.subsquid.io/rubick/v/008/graphql')
+      expect(url).eq('https://squid.subsquid.io/rubick/v/007/graphql')
     })
 
     it('should return subsquid kusama indexer', () => {
       const url = getUrl('kusama', 'subsquid')
-      expect(url).eq('https://squid.subsquid.io/rubick/v/008/graphql')
+      expect(url).eq('https://squid.subsquid.io/rubick/v/007/graphql')
     })
 
     it('should throw on subquery kusama indexer', () => {
