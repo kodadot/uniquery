@@ -24,7 +24,7 @@ export type QueryProps<T> = QueryOptions & {
   fields?: ObjProp<T>
 }
 
-type Base = {
+export type AbstractBase = {
   blockNumber: bigint
   createdAt: Date
   currentOwner: string
@@ -44,7 +44,7 @@ type MetadataEntity = {
   type: string
 }
 
-export type BaseCollection = Base & {
+export type BaseCollection = AbstractBase & {
   max: number
   metadata: string
   symbol: string
@@ -57,7 +57,7 @@ export type SquidCollection = BaseCollection & {
   meta: MetadataEntity
 }
 
-export type BaseNFT = Base & {
+export type BaseNFT = AbstractBase & {
   burned: Boolean
   collection: SquidCollection
   instance: string
