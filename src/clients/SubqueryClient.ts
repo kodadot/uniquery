@@ -7,6 +7,10 @@ import AbstractClient from './abstractClient'
 import { getFields, optionToQuery, wrapSubqueryList } from './defaults'
 
 class SubqueryClient implements AbstractClient<BaseCollection, BaseNFT> {
+  collectionListByName(name: string, options?: QueryProps<BaseCollection>): GraphQuery {
+    throw new Error('Method not implemented.')
+  }
+
   itemById(id: string, fields?: ObjProp<BaseNFT>): GraphQuery {
     const toQuery = getFields(fields)
     return build('item: nFTEntity', toQuery, { id: { type: 'String', required: true, value: id, name: 'id' } })
@@ -58,6 +62,10 @@ class SubqueryClient implements AbstractClient<BaseCollection, BaseNFT> {
     return build(`collections: collectionEntities(filter: { issuer: { equalTo: ${issuer} } })`, toQuery)
   }
 
+  eventList(options?: QueryProps<BaseNFT>): GraphQuery {
+    throw new Error('Method not implemented.')
+  }
+
   eventListByAddress(address: string, options?: QueryProps<BaseEvent>): GraphQuery {
     throw new Error('Method not implemented.')
   }
@@ -86,11 +94,19 @@ class SubqueryClient implements AbstractClient<BaseCollection, BaseNFT> {
     throw new Error('Method not implemented.')
   }
 
+  itemListByName(name: string, options?: QueryProps<BaseNFT>): GraphQuery {
+    throw new Error('Method not implemented.')
+  }
+
   itemListByMetadataId(id: string, options?: QueryProps<BaseNFT>): GraphQuery {
     throw new Error('Method not implemented.')
   }
 
   itemListByMetadataIdMatch(id: string, options?: QueryProps<BaseNFT>): GraphQuery {
+    throw new Error('Method not implemented.')
+  }
+
+  itemListForSaleByCollectionId(id: string, options?: QueryProps<BaseNFT>): GraphQuery {
     throw new Error('Method not implemented.')
   }
 }
