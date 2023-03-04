@@ -4,18 +4,18 @@ import { parsePath, pathToRequest } from '../src/rest/path'
 describe.only('Path utils', () => {
   describe('parse path should', () => {
     it('be fully defined', () => {
-      const pathname = '/bsx/nft/0-1'
+      const pathname = '/bsx/item/0-1'
       const [chain, call, id] = parsePath(pathname)
       expect(chain).eq('bsx')
-      expect(call).eq('nft')
+      expect(call).eq('item')
       expect(id).eq('0-1')
     })
 
     it('have id undefined', () => {
-      const pathname = '/bsx/nft'
+      const pathname = '/bsx/item'
       const [chain, call, id] = parsePath(pathname)
       expect(chain).eq('bsx')
-      expect(call).eq('nft')
+      expect(call).eq('item')
       expect(id).eq(undefined)
     })
   })
@@ -27,14 +27,14 @@ describe.only('Path utils', () => {
       { input: 'collectionByOwner/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' },
       { input: 'eventByAddress/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' },
       { input: 'eventByInteraction/BUY' },
-      { input: 'eventByNftId/2305670031-1' },
-      { input: 'nft/2305670031-1' },
-      { input: 'nftByCollection/2305670031' },
-      { input: 'nftByIssuer/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' },
-      { input: 'nftByCid/bafkreihdgtq6ufy2i2ow7ff264lk5mwhnsrlnwgsikz534b2bybdxdrbjm' },
-      { input: 'nftByOwner/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' },
-      { input: 'nftCollectedBy/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' },
-      { input: 'nftSoldBy/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' }
+      { input: 'eventByItemId/2305670031-1' },
+      { input: 'item/2305670031-1' },
+      { input: 'itemByCollection/2305670031' },
+      { input: 'itemByIssuer/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' },
+      { input: 'itemByCid/bafkreihdgtq6ufy2i2ow7ff264lk5mwhnsrlnwgsikz534b2bybdxdrbjm' },
+      { input: 'itemByOwner/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' },
+      { input: 'itemCollectedBy/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' },
+      { input: 'itemSoldBy/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' }
     ]
 
     for (const test of tests) {
@@ -50,7 +50,7 @@ describe.only('Path utils', () => {
   describe('faioled path to request', () => {
     const tests = [
       { input: 'sbx/collection/2305670031' },
-      { input: 'rmrk/nftById/2305670031-1' },
+      { input: 'rmrk/itemById/2305670031-1' },
       { input: 'collectionByIssuer/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' }
     ]
 
