@@ -9,3 +9,5 @@ export const indexers: Record<Prefix, string> = {
 }
 
 export const getUrl = (chain: Prefix | ''): string => indexers[chain]
+
+export const getAvailableChains = (): Prefix[] => Object.keys(indexers) as Prefix[]
