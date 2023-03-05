@@ -62,7 +62,7 @@ class SubqueryClient implements AbstractClient<BaseCollection, BaseNFT> {
     return build(`collections: collectionEntities(filter: { issuer: { equalTo: ${issuer} } })`, toQuery)
   }
 
-  eventList(options?: QueryProps<BaseNFT>): GraphQuery {
+  eventList(options?: QueryProps<BaseEvent>): GraphQuery {
     throw new Error('Method not implemented.')
   }
 
