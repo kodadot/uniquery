@@ -1,4 +1,4 @@
-import { FetchOptions } from 'ohmyfetch'
+import { FetchOptions } from 'ofetch'
 import { GraphLike, GraphRequest } from './types'
 
 export const getOptions = ({

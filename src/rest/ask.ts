@@ -1,7 +1,7 @@
 // /bsx/nft/:id
 // TODO: fn returns { data: T } but should return T
 // unwrap data should be done in the caller
-import { $fetch } from 'ohmyfetch'
+import { $fetch } from 'ofetch'
 import { QueryProps } from '../types'
 import { pathToRequest } from './path'
 import { GraphLike } from './types'
