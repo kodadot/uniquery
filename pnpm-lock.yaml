@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@kodadot1/static': 0.0.1-rc.0
-  '@kodadot1/vuex-options': ^0.0.3-rc.10
   '@nuxtjs/eslint-config-typescript': latest
   c8: latest
   eslint: latest
@@ -17,7 +16,6 @@ specifiers:
 
 dependencies:
   '@kodadot1/static': 0.0.1-rc.0
-  '@kodadot1/vuex-options': 0.0.3-rc.10
   gql-query-builder: 3.8.0
   ofetch: 1.0.1
   scule: 1.0.0
@@ -199,13 +197,6 @@ packages:
     dependencies:
       '@babel/types': 7.20.7
     dev: true
-
-  /@babel/runtime/7.20.0:
-    resolution: {integrity: sha512-NDYdls71fTXoU8TZHfbBWg7DiZfNzClcKui/+kyi6ppD2L1qnWW3VV6CjtaBXSUGGhiTWJ6ereOIkUvenif66Q==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.13.10
-    dev: false
 
   /@babel/standalone/7.20.13:
     resolution: {integrity: sha512-L13qadxX3yB4mU92iSiWKePm3hYfGaAXPMqGEPUDNzzsmNh0+1M7agMBF62UHM29kFWOWowGfRRDvfAU8uLovg==}
@@ -562,12 +553,6 @@ packages:
     resolution: {integrity: sha512-0c91/nU4kyVSA218+vDJHnbGbBxFauuv7LpTXdQHo2vXvxbDou46tvSqN7Ac91SG1blTKhgMe2xWBEBsA4n7Nw==}
     dev: false
 
-  /@kodadot1/vuex-options/0.0.3-rc.10:
-    resolution: {integrity: sha512-3r+PKuSK95PJX9A3e7/oqODT0LZ1lcaU/SDUwex16kDRo32xFXuAN0agYrAGCnnny7hGa90wjwKj7yujQcvA0g==}
-    dependencies:
-      '@polkadot/networks': 10.1.7
-    dev: false
-
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -639,59 +624,6 @@ packages:
       tiny-glob: 0.2.9
       tslib: 2.4.0
     dev: true
-
-  /@polkadot/networks/10.1.7:
-    resolution: {integrity: sha512-ol864SZ/GwAF72GQOPRy+Y9r6NtgJJjMBlDLESvV5VK64eEB0MRSSyiOdd7y/4SumR9crrrNimx3ynACFgxZ8A==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@babel/runtime': 7.20.0
-      '@polkadot/util': 10.1.7
-      '@substrate/ss58-registry': 1.33.0
-    dev: false
-
-  /@polkadot/util/10.1.7:
-    resolution: {integrity: sha512-s7gDLdNb4HUpoe3faXwoO6HwiUp8pi66voYKiUYRh1kEtW1o9vGBgyZPHPGC/FBgILzTJKii/9XxnSex60zBTA==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@babel/runtime': 7.20.0
-      '@polkadot/x-bigint': 10.1.7
-      '@polkadot/x-global': 10.1.7
-      '@polkadot/x-textdecoder': 10.1.7
-      '@polkadot/x-textencoder': 10.1.7
-      '@types/bn.js': 5.1.1
-      bn.js: 5.2.1
-    dev: false
-
-  /@polkadot/x-bigint/10.1.7:
-    resolution: {integrity: sha512-uaClHpI6cnDumIfejUKvNTkB43JleEb0V6OIufDKJ/e1aCLE3f/Ws9ggwL8ea05lQP5k5xqOzbPdizi/UvrgKQ==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@babel/runtime': 7.20.0
-      '@polkadot/x-global': 10.1.7
-    dev: false
-
-  /@polkadot/x-global/10.1.7:
-    resolution: {integrity: sha512-k2ZUZyBVgDnP/Ysxapa0mthn63j6gsN2V0kZejEQPyOfCHtQQkse3jFvAWdslpWoR8j2k8SN5O6reHc0F4f7mA==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@babel/runtime': 7.20.0
-    dev: false
-
-  /@polkadot/x-textdecoder/10.1.7:
-    resolution: {integrity: sha512-iAFOHludmZFOyVL8sQFv4TDqbcqQU5gwwYv74duTA+WQBgbSITJrBahSCV/rXOjUqds9pzQO3qBFzziznNnkiQ==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@babel/runtime': 7.20.0
-      '@polkadot/x-global': 10.1.7
-    dev: false
-
-  /@polkadot/x-textencoder/10.1.7:
-    resolution: {integrity: sha512-GzjaWZDbgzZ0IQT60xuZ7cZ0wnlNVYMqpfI9KvBc58X9dPI3TIMwzbXDVzZzpjY1SAqJGs4hJse9HMWZazfhew==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@babel/runtime': 7.20.0
-      '@polkadot/x-global': 10.1.7
-    dev: false
 
   /@rollup/plugin-alias/4.0.3_rollup@3.18.0:
     resolution: {integrity: sha512-ZuDWE1q4PQDhvm/zc5Prun8sBpLJy41DMptYrS6MhAy9s9kL/doN1613BWfEchGVfKxzliJ3BjbOPizXX38DbQ==}
@@ -784,16 +716,6 @@ packages:
       rollup: 3.18.0
     dev: true
 
-  /@substrate/ss58-registry/1.33.0:
-    resolution: {integrity: sha512-DztMuMcEfu+tJrtIQIIp5gO8/XJZ8N8UwPObDCSNgrp7trtSkPJAUFB9qXaReXtN9UvTcVBMTWk6VPfFi04Wkg==}
-    dev: false
-
-  /@types/bn.js/5.1.1:
-    resolution: {integrity: sha512-qNrYbZqMx0uJAfKnKclPh+dTwK33KfLHYqtyODwd5HnXOjnkhc4qgn3BrK6RWyGZm5+sIFE7Q7Vz6QQtJB7w7g==}
-    dependencies:
-      '@types/node': 18.11.8
-    dev: false
-
   /@types/chai-subset/1.3.3:
     resolution: {integrity: sha512-frBecisrNGz+F4T6bcc+NLeolfiojh5FxW2klu669+8BARtyQv2C/GkNW6FUodVe4BroGMP/wER/YDGc7rEllw==}
     dependencies:
@@ -826,6 +748,7 @@ packages:
 
   /@types/node/18.11.8:
     resolution: {integrity: sha512-uGwPWlE0Hj972KkHtCDVwZ8O39GmyjfMane1Z3GUBGGnkZ2USDq7SxLpVIiIHpweY9DS0QTDH0Nw7RNBsAAZ5A==}
+    dev: true
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -1120,10 +1043,6 @@ packages:
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
-
-  /bn.js/5.2.1:
-    resolution: {integrity: sha512-eXRvHzWyYPBuB4NBy0cmYQjGitUrtqwbvlzP3G6VFnNRbsZQIxQ10PbKKHt8gZ/HW/D/747aDl+QkDqg3KQLMQ==}
-    dev: false
 
   /boolbase/1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
@@ -3700,10 +3619,6 @@ packages:
       indent-string: 4.0.0
       strip-indent: 3.0.0
     dev: true
-
-  /regenerator-runtime/0.13.10:
-    resolution: {integrity: sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjIMZ1t7gpze+26QqtdGqw==}
-    dev: false
 
   /regexp-tree/0.1.24:
     resolution: {integrity: sha512-s2aEVuLhvnVJW6s/iPgEGK6R+/xngd2jNQ+xy4bXNDKxZKJH6jpPHY6kVeVv1IeLCHgswRj+Kl3ELaDjG6V1iw==}
