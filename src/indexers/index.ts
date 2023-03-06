@@ -1,15 +1,14 @@
-import { INDEXERS } from '@kodadot1/vuex-options'
+import { INDEXERS, Prefix } from '@kodadot1/static'
 import { Provider, Or } from '../types'
 
-function getUrl(chain: string, provider: Or<Provider, ''> = ''): string {
-  const result = INDEXERS.find(
-    ({ info, value }) => info === chain && value.toString().includes(provider)
-  )
-  if (!result) {
+function getUrl(chain: Prefix, provider: Or<Provider, ''> = ''): string {
+  const result: string | undefined = INDEXERS[chain]
+
+  if (!result || provider === 'subquery') {
     throw new ReferenceError('Indexer not found')
   }
 
-  return result.value as string
+  return result
 }
 
 export default getUrl
