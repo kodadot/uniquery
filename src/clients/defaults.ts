@@ -12,6 +12,11 @@ function hasMetaField(field: any): boolean {
   return typeof field === 'string' && field === 'meta'
 }
 
+export function extendFields<T extends AbstractBase>(fields: ObjProp<T>): Fields<T> {
+  const set = new Set([...defaultField, ...fields])
+  return [...set]
+}
+
 export function getFields<T>(fields?: ObjProp<T>, defaultList: ObjProp<T> | string[] = defaultField): Fields<T> {
   const list = fields ?? defaultList
 
