@@ -1,6 +1,7 @@
 export type KeyOf<T> = keyof T
 export type ObjProp<T> = Array<KeyOf<T>>
-export type FieldList = Array<string | object>
+// FieldList is a type that can is array containing either a string or an object that contains a string array
+export type FieldList = Array<string | { [ meta: string ]: string[] }>
 
 export type Fields<T> = FieldList | ObjProp<T>
 export type KeyValue = {
@@ -22,7 +23,6 @@ export type QueryOptions = {
 // NEW: client.eventListByNftId('123', { fields: ['id', 'name'], limit: 10 })
 export type QueryProps<T> = QueryOptions & {
   fields?: ObjProp<T>
-  withMeta?: true
 }
 
 export type AbstractBase = {
