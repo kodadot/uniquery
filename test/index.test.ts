@@ -1,6 +1,6 @@
 import { expect, it, describe } from 'vitest'
 import { getUrl } from '../src'
-import { getFields } from '../src/clients/defaults'
+import { extendFields, getFields } from '../src/clients/defaults'
 import { SquidNFT } from '../src/types'
 
 describe('UNIQUERY UTILS', () => {
@@ -35,6 +35,18 @@ describe('UNIQUERY UTILS', () => {
     it('should return unwrapped meta', () => {
       const [, meta] = getFields<SquidNFT>(['id', 'meta'])
       expect(meta).toStrictEqual({ meta: ['id', 'name', 'description', 'image', 'animationUrl', 'type'] })
+    })
+  })
+
+  describe('extendFields', () => {
+    it('should return default fields', () => {
+      const fields = extendFields<SquidNFT>(['meta'])
+      expect(fields).toStrictEqual(['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer', 'meta'])
+    })
+
+    it('should return unique fields', () => {
+      const fields = extendFields<SquidNFT>(['id', 'metadata', 'name', 'meta'])
+      expect(fields).toStrictEqual(['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer', 'meta'])
     })
   })
 })

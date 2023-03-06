@@ -1,4 +1,7 @@
 # @kodadot1/uniquery
+---
+
+Universal GraphQL query builder for KodaDot
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
