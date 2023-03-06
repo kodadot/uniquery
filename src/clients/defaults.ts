@@ -8,8 +8,20 @@ export const defaultQueryOptions: QueryOptions = {
   limit: DEFAULT_LIMIT
 }
 
+function hasMetaField(field: any): boolean {
+  return typeof field === 'string' && field === 'meta'
+}
+
 export function getFields<T>(fields?: ObjProp<T>, defaultList: ObjProp<T> | string[] = defaultField): Fields<T> {
-  return fields ?? defaultList
+  const list = fields ?? defaultList
+
+  const metaIndex = list.findIndex(hasMetaField)
+
+  if (metaIndex !== -1) {
+    list.splice(metaIndex, 1, { meta: ['id', 'name', 'description', 'image', 'animationUrl', 'type'] } as any)
+  }
+
+  return list
 }
 
 export function wrapSubqueryList<T>(fields: Fields<T>): [{ nodes: Fields<T> }] {
