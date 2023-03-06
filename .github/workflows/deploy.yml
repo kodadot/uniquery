@@ -1,0 +1,20 @@
+name: Deploy package
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - uses: actions/checkout@v3
+      - run: corepack enable
+      - name: Publish
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "pnpm"
+          registry-url: 'https://registry.npmjs.org'
+      - run: pnpm install
+      - run: pnpm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
