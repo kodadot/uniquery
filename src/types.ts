@@ -22,6 +22,7 @@ export type QueryOptions = {
 // NEW: client.eventListByNftId('123', { fields: ['id', 'name'], limit: 10 })
 export type QueryProps<T> = QueryOptions & {
   fields?: ObjProp<T>
+  withMeta?: true
 }
 
 export type AbstractBase = {

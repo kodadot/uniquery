@@ -1,6 +1,6 @@
 {
   "name": "@kodadot1/uniquery",
-  "version": "0.1.1-rc.0",
+  "version": "0.2.0-rc.0",
   "description": "",
   "repository": "kodadot/uniquery",
   "license": "MIT",
@@ -27,11 +27,11 @@
     "test": "vitest run --dir test"
   },
   "dependencies": {
-    "@kodadot1/vuex-options": "^0.0.3-rc.10",
-    "gql-query-builder": "^3.7.2",
-    "ohmyfetch": "^0.4.20",
-    "scule": "^0.3.2",
-    "ufo": "^0.8.6"
+    "@kodadot1/static": "0.0.1-rc.0",
+    "gql-query-builder": "^3.8.0",
+    "ofetch": "^1.0.1",
+    "scule": "^1.0.0",
+    "ufo": "^1.1.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "latest",
