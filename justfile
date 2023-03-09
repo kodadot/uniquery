@@ -16,3 +16,6 @@ up: build publish
 
 update-deps:
   npx npm-check-updates -u
+
+deploy:
+  gh workflow run deploy.yml
