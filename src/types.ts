@@ -19,6 +19,8 @@ export type QueryOptions = {
   orderBy?: string
 }
 
+export type GraphLike<T> = { data: T } | T
+
 // NOW: client.eventListByNftId('123', ['id', 'name'], { limit: 10 })
 // NEW: client.eventListByNftId('123', { fields: ['id', 'name'], limit: 10 })
 export type QueryProps<T> = QueryOptions & {
