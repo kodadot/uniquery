@@ -1,12 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
+import { Prefix } from '@kodadot1/static'
 import build from '../queryBuilder'
-import { GraphQuery, ObjProp, BaseCollection, BaseNFT, QueryOptions, BaseEvent, QueryProps } from '../types'
+import { GraphQuery, ObjProp, BaseCollection, BaseNFT, QueryOptions, BaseEvent, QueryProps, GraphLike } from '../types'
 
 import AbstractClient from './abstractClient'
 import { getFields, optionToQuery, wrapSubqueryList } from './defaults'
 
 class SubqueryClient implements AbstractClient<BaseCollection, BaseNFT> {
+  private prefix: Prefix
+
+  constructor(prefix: Prefix) {
+    this.prefix = prefix
+  }
+
   collectionListByName(name: string, options?: QueryProps<BaseCollection>): GraphQuery {
     throw new Error('Method not implemented.')
   }
@@ -107,6 +114,10 @@ class SubqueryClient implements AbstractClient<BaseCollection, BaseNFT> {
   }
 
   itemListForSaleByCollectionId(id: string, options?: QueryProps<BaseNFT>): GraphQuery {
+    throw new Error('Method not implemented.')
+  }
+
+  fetch<D>(query: GraphQuery): Promise<GraphLike<D>> {
     throw new Error('Method not implemented.')
   }
 }
