@@ -1,5 +1,5 @@
 
-import { BaseEvent, GraphQuery, ObjProp, QueryProps } from '../types'
+import { BaseEvent, GraphLike, GraphQuery, ObjProp, QueryProps } from '../types'
 // Collection, Token
 interface AbstractClient<C, T, E = BaseEvent> {
   collectionById(id: string, fields?: ObjProp<C>): GraphQuery
@@ -29,6 +29,7 @@ interface AbstractClient<C, T, E = BaseEvent> {
   itemListSoldBy(address: string, options?: QueryProps<T>): GraphQuery
   // collectionStatListById(id: string, options?: QueryProps<T>): GraphQuery
   // lastItemIdbyCollectionId(id: string, options?: QueryProps<T>): GraphQuery
+  fetch<D>(query: GraphQuery): Promise<GraphLike<D>>
 }
 
 export default AbstractClient
