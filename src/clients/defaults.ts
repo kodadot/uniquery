@@ -8,8 +8,6 @@ export const defaultQueryOptions: QueryOptions = {
   limit: DEFAULT_LIMIT
 }
 
-export const GRAPHQL_PATH = '/graphql'
-
 function hasMetaField(field: any): boolean {
   return typeof field === 'string' && field === 'meta'
 }
