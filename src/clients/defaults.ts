@@ -46,7 +46,7 @@ export function optionToQuery(
     query += `, offset: ${final.offset}`
   }
   if (final.orderBy) {
-    query += `, orderBy: "${final.orderBy}"`
+    query += `, orderBy: ${final.orderBy}`
   }
   return query
 }

@@ -1,5 +1,5 @@
 import { FetchOptions } from 'ofetch'
-import { GraphLike, GraphRequest } from './types'
+import { GraphLike, GraphRequest } from '../rest/types'
 
 export const getOptions = ({
   baseURL,
