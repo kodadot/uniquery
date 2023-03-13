@@ -1,13 +1,16 @@
 
 import { Prefix } from '@kodadot1/static'
+import { $fetch } from 'ofetch'
+import getUrl from '../indexers'
+import { getOptions } from '../indexers/utils'
 import build from '../queryBuilder'
 import { BaseEvent, GraphLike, GraphQuery, KeyOf, ObjProp, QueryProps, SquidCollection, SquidNFT } from '../types'
 
 import AbstractClient from './abstractClient'
-import { defaultEventField, getFields, optionToQuery } from './defaults'
+import { defaultEventField, getFields, GRAPHQL_PATH, optionToQuery } from './defaults'
 
 class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
-  private prefix: Prefix
+  private prefix?: Prefix
 
   constructor(prefix?: Prefix) {
     if (prefix) {
@@ -157,8 +160,10 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
     return build(`items: nftEntities(where: {meta: {id_containsInsensitive: "${id}"}} ${optionList})`, toQuery)
   }
 
-  fetch<D>(_query: GraphQuery): Promise<GraphLike<D>> {
-    throw new Error('Method not implemented.')
+  fetch<D>(query: GraphQuery): Promise<GraphLike<D>> {
+    const baseURL = getUrl(this.prefix)
+    const opts = getOptions({ query, baseURL, path: '' })
+    return $fetch<GraphLike<D>>(GRAPHQL_PATH, opts)
   }
 }
 
