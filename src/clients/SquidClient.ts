@@ -1,11 +1,20 @@
 
+import { Prefix } from '@kodadot1/static'
 import build from '../queryBuilder'
-import { BaseEvent, GraphQuery, KeyOf, ObjProp, QueryProps, SquidCollection, SquidNFT } from '../types'
+import { BaseEvent, GraphLike, GraphQuery, KeyOf, ObjProp, QueryProps, SquidCollection, SquidNFT } from '../types'
 
 import AbstractClient from './abstractClient'
 import { defaultEventField, getFields, optionToQuery } from './defaults'
 
 class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
+  private prefix: Prefix
+
+  constructor(prefix?: Prefix) {
+    if (prefix) {
+      this.prefix = prefix
+    }
+  }
+
   collectionById(id: string, fields?: ObjProp<SquidCollection>): GraphQuery {
     const toQuery = getFields(fields)
     return build('collection: collectionEntityById', toQuery, { id: { type: 'String', required: true, value: id, name: 'id' } })
@@ -146,6 +155,10 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
     const toQuery = getFields(options?.fields)
     const optionList = optionToQuery(options, true)
     return build(`items: nftEntities(where: {meta: {id_containsInsensitive: "${id}"}} ${optionList})`, toQuery)
+  }
+
+  fetch<D>(_query: GraphQuery): Promise<GraphLike<D>> {
+    throw new Error('Method not implemented.')
   }
 }
 

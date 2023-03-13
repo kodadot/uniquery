@@ -10,8 +10,10 @@ import { getFields, optionToQuery, wrapSubqueryList } from './defaults'
 class SubqueryClient implements AbstractClient<BaseCollection, BaseNFT> {
   private prefix: Prefix
 
-  constructor(prefix: Prefix) {
-    this.prefix = prefix
+  constructor(prefix?: Prefix) {
+    if (prefix) {
+      this.prefix = prefix
+    }
   }
 
   collectionListByName(name: string, options?: QueryProps<BaseCollection>): GraphQuery {
