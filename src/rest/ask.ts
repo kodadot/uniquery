@@ -3,9 +3,9 @@
 // unwrap data should be done in the caller
 import { $fetch } from 'ofetch'
 import { QueryProps } from '../types'
+import { getOptions } from '../indexers/utils'
 import { pathToRequest } from './path'
 import { GraphLike } from './types'
-import { getOptions } from './utils'
 
 const GRAPHQL_PATH = '/graphql'
 
