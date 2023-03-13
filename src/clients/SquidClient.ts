@@ -7,7 +7,7 @@ import build from '../queryBuilder'
 import { BaseEvent, GraphLike, GraphQuery, KeyOf, ObjProp, QueryProps, SquidCollection, SquidNFT } from '../types'
 
 import AbstractClient from './abstractClient'
-import { defaultEventField, getFields, GRAPHQL_PATH, optionToQuery } from './defaults'
+import { defaultEventField, getFields, optionToQuery } from './defaults'
 
 class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
   private prefix?: Prefix
