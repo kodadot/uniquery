@@ -6,7 +6,6 @@ Universal GraphQL query builder for KodaDot
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Github Actions][github-actions-src]][github-actions-href]
-[![Codecov][codecov-src]][codecov-href]
 
 > GraphQL builder for KodaDot API
 
@@ -89,17 +88,11 @@ We have currently two implementations
 
 ```js
 import { getClient } from '@kodadot1/uniquery'
-import { $fetch } from 'ohmyfetch'
 
+const client = getClient()
 const id = '2305670031'
 const query = client.collectionById(id)
-const result = await $fetch(SUBSQUID_INDEXER_ENDPOINT, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: query,
-})
+const result = await client.fetch(query)
 ```
 
 - 2. REST
@@ -178,13 +171,13 @@ Please open a pull-request if you know how to fix this
 
 - Clone this repository
 ```bash
-git clone https://github.com/kodadot/packages.git
+git clone https://github.com/kodadot/uniquery.git
 
 ```
 
 - Navigate to the packages directory
 ```bash
-cd packages/uniquery
+cd uniquery
 ```
 
 - Enable [Corepack](https://github.com/nodejs/corepack) by running:
@@ -222,8 +215,6 @@ Published under [MIT License](./LICENSE).
 [npm-downloads-src]: https://img.shields.io/npm/dm/@kodadot1/uniquery?style=flat-square
 [npm-downloads-href]: https://npmjs.com/package/@kodadot1/uniquery
 
-[github-actions-src]: https://img.shields.io/github/workflow/status/unjs/@kodadot1/uniquery/ci/main?style=flat-square
-[github-actions-href]: https://github.com/unjs/@kodadot1/uniquery/actions?query=workflow%3Aci
+[github-actions-src]: https://img.shields.io/github/actions/workflow/status/kodadot/uniquery/ci.yml?branch=main
+[github-actions-href]: https://github.com/kodadot/uniquery/actions?query=workflow%3Aci
 
-[codecov-src]: https://img.shields.io/codecov/c/gh/unjs/@kodadot1/uniquery/main?style=flat-square
-[codecov-href]: https://codecov.io/gh/unjs/@kodadot1/uniquery
