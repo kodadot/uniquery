@@ -6,7 +6,6 @@ Universal GraphQL query builder for KodaDot
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Github Actions][github-actions-src]][github-actions-href]
-[![Codecov][codecov-src]][codecov-href]
 
 > GraphQL builder for KodaDot API
 
@@ -89,17 +88,11 @@ We have currently two implementations
 
 ```js
 import { getClient } from '@kodadot1/uniquery'
-import { $fetch } from 'ohmyfetch'
 
+const client = getClient()
 const id = '2305670031'
 const query = client.collectionById(id)
-const result = await $fetch(SUBSQUID_INDEXER_ENDPOINT, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: query,
-})
+const result = await client.fetch(query)
 ```
 
 - 2. REST
@@ -115,6 +108,7 @@ const result = await ask(`/bsx/itemByCollection/${id}`)
 
 ### ✔️  Uniquery
 
+- `extendFields` - extends default list with newly provided values
 - `getClient` - returns GrahpQL query builder
 - `getUrl` - returns GrahpQL indexer url
 - `SquidClient` - returns SquidClient instance
@@ -129,21 +123,27 @@ From REST:
 
 - collectionById - returns collection by id
 - collectionListByIssuer - returns collections where issuer (creator) is equal to provided address
+- collectionListByName - returns collections where name contains provided name
 - collectionListByOwner - returns collections where owner is equal to provided address
+- eventList - returns all events
 - eventListByAddress - returns events by address
+- eventListByCollectionId - returns events for nfts that belong to collection
 - eventListByInteraction - returns events by interaction
-- eventListByNftId - returns events by nft id
+- eventListByItemId - returns events by nft id
 - itemById - returns NFT by id
 - itemListByCollectionId - returns NFTs where collection id is equal to provided id
 - itemListByCollectionIdAndOwner - returns NFTs where collection id is equal to provided id and owner is equal to provided address
 - itemListByCollectionIdList - return list of NFTs by list of collectionIds
 - itemListByIssuer - returns NFTs where issuer (creator) is equal to provided address
+- itemListByName - returns NFTs where name contains provided name
 - itemListByMetadataId - returns NFTs where metadata is equal to provided uri
 - itemListByMetadataIdMatch -returns NFTs where metadata can match provided CID
 - itemListByOwner - returns NFTs where owner is equal to provided address
 - itemListCollectedBy - returns NFTs where owner is equal to provided address however it's not the issuer of the NFT
 - itemListForSale - returns NFTs where price is greater than 0
+- itemListForSaleByCollectionId - returns NFTs where price is greater than 0 and belong to particular collection
 - itemListSoldBy - no idea :shrug:
+- fetch<D> - generic function to fetch data from provided query
 
 ### ✔️  REST
 
@@ -178,13 +178,13 @@ Please open a pull-request if you know how to fix this
 
 - Clone this repository
 ```bash
-git clone https://github.com/kodadot/packages.git
+git clone https://github.com/kodadot/uniquery.git
 
 ```
 
 - Navigate to the packages directory
 ```bash
-cd packages/uniquery
+cd uniquery
 ```
 
 - Enable [Corepack](https://github.com/nodejs/corepack) by running:
@@ -222,8 +222,6 @@ Published under [MIT License](./LICENSE).
 [npm-downloads-src]: https://img.shields.io/npm/dm/@kodadot1/uniquery?style=flat-square
 [npm-downloads-href]: https://npmjs.com/package/@kodadot1/uniquery
 
-[github-actions-src]: https://img.shields.io/github/workflow/status/unjs/@kodadot1/uniquery/ci/main?style=flat-square
-[github-actions-href]: https://github.com/unjs/@kodadot1/uniquery/actions?query=workflow%3Aci
+[github-actions-src]: https://img.shields.io/github/actions/workflow/status/kodadot/uniquery/ci.yml?branch=main
+[github-actions-href]: https://github.com/kodadot/uniquery/actions?query=workflow%3Aci
 
-[codecov-src]: https://img.shields.io/codecov/c/gh/unjs/@kodadot1/uniquery/main?style=flat-square
-[codecov-href]: https://codecov.io/gh/unjs/@kodadot1/uniquery
