@@ -108,6 +108,7 @@ const result = await ask(`/bsx/itemByCollection/${id}`)
 
 ### ✔️  Uniquery
 
+- `extendFields` - extends default list with newly provided values
 - `getClient` - returns GrahpQL query builder
 - `getUrl` - returns GrahpQL indexer url
 - `SquidClient` - returns SquidClient instance
