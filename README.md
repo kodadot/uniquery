@@ -122,21 +122,27 @@ From REST:
 
 - collectionById - returns collection by id
 - collectionListByIssuer - returns collections where issuer (creator) is equal to provided address
+- collectionListByName - returns collections where name contains provided name
 - collectionListByOwner - returns collections where owner is equal to provided address
+- eventList - returns all events
 - eventListByAddress - returns events by address
+- eventListByCollectionId - returns events for nfts that belong to collection
 - eventListByInteraction - returns events by interaction
-- eventListByNftId - returns events by nft id
+- eventListByItemId - returns events by nft id
 - itemById - returns NFT by id
 - itemListByCollectionId - returns NFTs where collection id is equal to provided id
 - itemListByCollectionIdAndOwner - returns NFTs where collection id is equal to provided id and owner is equal to provided address
 - itemListByCollectionIdList - return list of NFTs by list of collectionIds
 - itemListByIssuer - returns NFTs where issuer (creator) is equal to provided address
+- itemListByName - returns NFTs where name contains provided name
 - itemListByMetadataId - returns NFTs where metadata is equal to provided uri
 - itemListByMetadataIdMatch -returns NFTs where metadata can match provided CID
 - itemListByOwner - returns NFTs where owner is equal to provided address
 - itemListCollectedBy - returns NFTs where owner is equal to provided address however it's not the issuer of the NFT
 - itemListForSale - returns NFTs where price is greater than 0
+- itemListForSaleByCollectionId - returns NFTs where price is greater than 0 and belong to particular collection
 - itemListSoldBy - no idea :shrug:
+- fetch<D> - generic function to fetch data from provided query
 
 ### ✔️  REST
 
