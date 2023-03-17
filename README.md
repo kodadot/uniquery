@@ -21,7 +21,7 @@ Add Uniquery to your project
 npm install @kodadot1/uniquery
 
 # with yarn
-yarn install @kodadot1/uniquery
+yarn add @kodadot1/uniquery
 
 # with pnpm
 pnpm install @kodadot1/uniquery
