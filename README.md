@@ -89,11 +89,13 @@ We have currently two implementations
 ```js
 import { getClient } from '@kodadot1/uniquery'
 
-const client = getClient()
+const client = getClient('bsx')
 const id = '2305670031'
 const query = client.collectionById(id)
 const result = await client.fetch(query)
 ```
+
+> ⚠️: If you want to use `.fetch` method on client, you need to pass chain prefix as parameter
 
 - 2. REST
 
