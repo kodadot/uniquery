@@ -13,4 +13,4 @@ export type ClientCall = keyof AbstractClient<any, any>
 
 export type MayString = Or<string, undefined>
 
-export type Prefix = Exclude<PrefixUnion, 'rmrk2'>
+export type Prefix = PrefixUnion
