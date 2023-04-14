@@ -21,7 +21,8 @@
   "scripts": {
     "build": "unbuild",
     "dev": "vitest dev",
-    "lint": "eslint --ext .ts,.js,.mjs,.cjs .",
+    "lint": "eslint --ext .ts,.js,.mjs,.cjs ./src",
+    "lint:fix": "eslint --ext .ts,.js,.mjs,.cjs ./src --fix",
     "prepack": "unbuild",
     "release": "yarn test && changelogen && git push --follow-tags && npm publish",
     "test": "vitest run --dir test"
