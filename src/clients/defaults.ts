@@ -1,4 +1,4 @@
-import { ObjProp, Fields, QueryOptions, BaseEvent, AbstractBase } from '../types'
+import { ObjProp, Fields, QueryOptions, BaseEvent, AbstractBase, QueryProps } from '../types'
 
 export const defaultField: ObjProp<AbstractBase> = ['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer']
 export const defaultEventField: ObjProp<BaseEvent> = ['id', 'interaction', 'timestamp', 'caller', 'meta']
@@ -58,4 +58,13 @@ export function ensureOptions(options?: QueryOptions): QueryOptions {
     ...queryOptions,
     limit: Math.min(queryOptions.limit ?? DEFAULT_LIMIT, defaultQueryOptions.limit)
   }
+}
+
+type Burned = '' | `burned_eq: ${false}`
+export function includeBurned<T = unknown>(options?: QueryProps<T>): Burned {
+  if (options && options.burned) {
+    return ''
+  }
+
+  return 'burned_eq: false'
 }

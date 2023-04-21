@@ -16,6 +16,22 @@ class SubqueryClient implements AbstractClient<BaseCollection, BaseNFT> {
     }
   }
 
+  collectionListCreatedAfter(date: Date, options?: QueryProps<BaseCollection>): GraphQuery {
+    throw new Error('Method not implemented.')
+  }
+
+  itemListCreatedAfter(date: Date, options?: QueryProps<BaseNFT>): GraphQuery {
+    throw new Error('Method not implemented.')
+  }
+
+  collectionListWhere(where: Record<string, unknown>, options?: QueryProps<BaseCollection>): GraphQuery {
+    throw new Error('Method not implemented.')
+  }
+
+  itemListWhere(where: Record<string, unknown>, options?: QueryProps<BaseNFT>): GraphQuery {
+    throw new Error('Method not implemented.')
+  }
+
   collectionListByName(name: string, options?: QueryProps<BaseCollection>): GraphQuery {
     throw new Error('Method not implemented.')
   }
