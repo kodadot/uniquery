@@ -51,24 +51,24 @@ describe('UNIQUERY UTILS', () => {
   })
 
   describe('includeBurned', () => {
-    it('should return empty when no options are present', () => {
+    it('should return value false when no options are present', () => {
       const burned = includeBurned<SquidNFT>(undefined)
-      expect(burned).toBe('')
+      expect(burned).toBe('burned_eq: false')
     })
 
-    it('should return empty when options are present, but burned not', () => {
+    it('should return value false when options are present, but burned not', () => {
       const burned = includeBurned<SquidNFT>({ limit: 20, offset: 10 })
-      expect(burned).toBe('')
+      expect(burned).toBe('burned_eq: false')
     })
 
-    it('should return value true when burned present and true', () => {
+    it('should return empty true when burned present and true', () => {
       const burned = includeBurned<SquidNFT>({ limit: 20, offset: 10, burned: true })
-      expect(burned).toBe('burned: true')
+      expect(burned).toBe('')
     })
 
     it('should return value false when burned present and false', () => {
       const burned = includeBurned<SquidNFT>({ limit: 20, offset: 10, burned: false })
-      expect(burned).toBe('burned: false')
+      expect(burned).toBe('burned_eq: false')
     })
   })
 })
