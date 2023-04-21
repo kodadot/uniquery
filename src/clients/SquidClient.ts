@@ -7,7 +7,7 @@ import build from '../queryBuilder'
 import { BaseEvent, GraphLike, GraphQuery, KeyOf, ObjProp, QueryProps, SquidCollection, SquidNFT } from '../types'
 
 import AbstractClient from './abstractClient'
-import { defaultEventField, getFields, optionToQuery } from './defaults'
+import { defaultEventField, getFields, includeBurned, optionToQuery } from './defaults'
 
 class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
   private prefix?: Prefix
@@ -91,25 +91,29 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
   itemListByOwner(owner: string, options?: QueryProps<SquidNFT>): GraphQuery {
     const toQuery = getFields(options?.fields)
     const optionList = optionToQuery(options, true)
-    return build(`items: nftEntities(where: {currentOwner_eq: "${owner}"} ${optionList})`, toQuery)
+    const burned = includeBurned(options)
+    return build(`items: nftEntities(where: {currentOwner_eq: "${owner}", ${burned}} ${optionList})`, toQuery)
   }
 
   itemListByIssuer(issuer: string, options?: QueryProps<SquidNFT>): GraphQuery {
     const toQuery = getFields(options?.fields)
     const optionList = optionToQuery(options, true)
-    return build(`items: nftEntities(where: {issuer_eq: "${issuer}"} ${optionList})`, toQuery)
+    const burned = includeBurned(options)
+    return build(`items: nftEntities(where: {issuer_eq: "${issuer}",  ${burned}} ${optionList})`, toQuery)
   }
 
   itemListByName(name: string, options?: QueryProps<SquidNFT>): GraphQuery {
     const toQuery = getFields(options?.fields)
     const optionList = optionToQuery(options, true)
-    return build(`items: nftEntities(where: {name_containsInsensitive: "${name}"} ${optionList})`, toQuery)
+    const burned = includeBurned(options)
+    return build(`items: nftEntities(where: {name_containsInsensitive: "${name}", ${burned}} ${optionList})`, toQuery)
   }
 
   itemListCollectedBy(address: string, options?: QueryProps<SquidNFT>): GraphQuery {
     const toQuery = getFields(options?.fields)
     const optionList = optionToQuery(options, true)
-    return build(`items: nftEntities(where: {currentOwner_eq: "${address}", issuer_not_eq: "${address}"} ${optionList})`, toQuery)
+    const burned = includeBurned(options)
+    return build(`items: nftEntities(where: {currentOwner_eq: "${address}", issuer_not_eq: "${address}", ${burned}} ${optionList})`, toQuery)
   }
 
   itemListSoldBy(address: string, options?: QueryProps<SquidNFT>): GraphQuery {
