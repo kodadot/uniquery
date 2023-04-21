@@ -60,11 +60,11 @@ export function ensureOptions(options?: QueryOptions): QueryOptions {
   }
 }
 
-type Burned = '' | `burned: ${boolean}`
+type Burned = '' | `burned_eq: ${false}`
 export function includeBurned<T = unknown>(options?: QueryProps<T>): Burned {
-  if (!options || options.burned === undefined || options.burned === null) {
+  if (options && options.burned) {
     return ''
   }
 
-  return `burned: ${options.burned}`
+  return 'burned_eq: false'
 }
