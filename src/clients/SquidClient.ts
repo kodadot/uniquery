@@ -46,6 +46,12 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
     return build(`collections: collectionEntities(where: {currentOwner_eq: "${owner}"}  ${optionList})`, toQuery)
   }
 
+  collectionListWhere(where: Record<string, unknown>, options?: QueryProps<SquidCollection>): GraphQuery {
+    const toQuery = getFields(options?.fields)
+    const optionList = optionToQuery(options, true)
+    return build(`collections: collectionEntities(where: ${where}  ${optionList})`, toQuery)
+  }
+
   eventList(options?: QueryProps<BaseEvent>): GraphQuery {
     const toQuery = getFields(options?.fields ?? defaultEventField)
     const optionList = optionToQuery(options, true)
@@ -158,6 +164,12 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
     const toQuery = getFields(options?.fields)
     const optionList = optionToQuery(options, true)
     return build(`items: nftEntities(where: {meta: {id_containsInsensitive: "${id}"}} ${optionList})`, toQuery)
+  }
+
+  itemListWhere(where: Record<string, unknown>, options?: QueryProps<SquidNFT>): GraphQuery {
+    const toQuery = getFields(options?.fields)
+    const optionList = optionToQuery(options, true)
+    return build(`items: nftEntities(where: ${where} ${optionList})`, toQuery)
   }
 
   fetch<D>(query: GraphQuery): Promise<GraphLike<D>> {

@@ -7,6 +7,7 @@ interface AbstractClient<C, T, E = BaseEvent> {
   collectionListByIssuer(issuer: string, options?: QueryProps<C>): GraphQuery
   collectionListByName(name: string, options?: QueryProps<C>): GraphQuery
   collectionListByOwner(owner: string, options?: QueryProps<C>): GraphQuery
+  collectionListWhere(where: Record<string, unknown>, options?: QueryProps<C>): GraphQuery
   eventList(options?: QueryProps<E>): GraphQuery
   eventListByAddress(address: string, options?: QueryProps<E>): GraphQuery
   eventListByCollectionId(id: string, options?: QueryProps<E>): GraphQuery
@@ -27,6 +28,7 @@ interface AbstractClient<C, T, E = BaseEvent> {
   itemListForSale(options?: QueryProps<T>): GraphQuery
   itemListForSaleByCollectionId(id: string, options?: QueryProps<T>): GraphQuery
   itemListSoldBy(address: string, options?: QueryProps<T>): GraphQuery
+  itemListWhere(where: Record<string, unknown>, options?: QueryProps<T>): GraphQuery
   // collectionStatListById(id: string, options?: QueryProps<T>): GraphQuery
   // lastItemIdbyCollectionId(id: string, options?: QueryProps<T>): GraphQuery
   fetch<D>(query: GraphQuery): Promise<GraphLike<D>>
