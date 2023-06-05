@@ -1,6 +1,6 @@
 {
   "name": "@kodadot1/uniquery",
-  "version": "0.3.0-rc.0",
+  "version": "0.3.1-rc.0",
   "description": "Universal GraphQL query builder for KodaDot",
   "repository": "kodadot/uniquery",
   "license": "MIT",
@@ -28,11 +28,11 @@
     "test": "vitest run --dir test"
   },
   "dependencies": {
-    "@kodadot1/static": "0.0.1",
+    "@kodadot1/static": "0.0.3-rc.4",
     "gql-query-builder": "^3.8.0",
     "ofetch": "^1.0.1",
     "scule": "^1.0.0",
-    "ufo": "^1.1.1"
+    "ufo": "^1.1.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "latest",
