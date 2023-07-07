@@ -24,7 +24,7 @@ export type GraphLike<T> = { data: T } | T
 // NOW: client.eventListByNftId('123', ['id', 'name'], { limit: 10 })
 // NEW: client.eventListByNftId('123', { fields: ['id', 'name'], limit: 10 })
 export type QueryProps<T> = QueryOptions & {
-  fields?: ObjProp<T>,
+  fields?: ObjProp<T>
   burned?: boolean
 }
 
@@ -34,7 +34,9 @@ export type AbstractBase = {
   currentOwner: string
   id: string
   issuer: string
+  image?: string
   metadata: string
+  media: string
   name: string
 }
 
@@ -64,6 +66,7 @@ export type SquidCollection = BaseCollection & {
 export type BaseNFT = AbstractBase & {
   burned: Boolean
   collection: SquidCollection
+  hash: string
   instance: string
   price: bigint
   sn: string
@@ -82,7 +85,6 @@ export type BaseEvent = {
 }
 
 export type SquidNFT = BaseNFT & {
-  hash: string
   // events: [Event] @derivedFrom(field: "nft")
   // emotes: [Emote] @derivedFrom(field: "nft")
   meta: MetadataEntity
