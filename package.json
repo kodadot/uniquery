@@ -30,14 +30,14 @@
   "dependencies": {
     "@kodadot1/static": "0.0.3-rc.4",
     "gql-query-builder": "^3.8.0",
-    "ofetch": "^1.0.1",
+    "ofetch": "^1.1.1",
     "scule": "^1.0.0",
     "ufo": "^1.1.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "latest",
     "c8": "latest",
-    "changelogen": "^0.5.3",
+    "changelogen": "^0.5.4",
     "eslint": "latest",
     "typescript": "latest",
     "unbuild": "latest",
