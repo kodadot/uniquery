@@ -40,14 +40,14 @@ describe.only('Path utils', () => {
     for (const test of tests) {
       it(test.input, () => {
         const res = pathToRequest(`/bsx/${test.input}`)
-        expect(res.baseURL).toBe('https://squid.subsquid.io/snekk/v/005')
+        expect(res.baseURL).toBe('https://squid.subsquid.io/snekk/graphql')
         expect(res).haveOwnProperty('query')
         expect(res.query).not.toBeUndefined()
       })
     }
   })
 
-  describe('faioled path to request', () => {
+  describe('failed path to request', () => {
     const tests = [
       { input: 'sbx/collection/2305670031' },
       { input: 'rmrk/itemById/2305670031-1' },
