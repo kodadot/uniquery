@@ -19,6 +19,26 @@ describe('UNIQUERY UTILS', () => {
       const fn = () => getUrl('ksm', 'subquery')
       expect(fn).toThrow(ReferenceError)
     })
+
+    it('should return default kusama indexer', () => {
+      const url = getUrl('ksm')
+      expect(url).eq('https://squid.subsquid.io/marck/v/v2/graphql')
+    })
+
+    it('should return default basilisk indexer', () => {
+      const url = getUrl('bsx')
+      expect(url).eq('https://squid.subsquid.io/snekk/graphql')
+    })
+
+    it('should return default Kusama Asset Hub indexer', () => {
+      const url = getUrl('ahk')
+      expect(url).eq('https://squid.subsquid.io/stick/graphql')
+    })
+
+    it('should return default Polkadot Asset Hub indexer', () => {
+      const url = getUrl('ahp')
+      expect(url).eq('https://squid.subsquid.io/speck/graphql')
+    })
   })
 
   describe('getFields', () => {

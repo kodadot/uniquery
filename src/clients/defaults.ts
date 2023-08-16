@@ -17,15 +17,16 @@ export function extendFields<T extends AbstractBase>(fields: ObjProp<T>): ObjPro
   return [...set]
 }
 
-export function getFields<T>(fields?: ObjProp<T>, defaultList: ObjProp<T> | string[] = defaultField): Fields<T> {
+export function getFields<T>(fields?: ObjProp<T>, defaultList: ObjProp<T> | string[] = defaultField, replaceMetaField = true): Fields<T> {
   const list = fields ?? defaultList
 
-  const metaIndex = list.findIndex(hasMetaField)
+  if (replaceMetaField) {
+    const metaIndex = list.findIndex(hasMetaField)
 
-  if (metaIndex !== -1) {
-    list.splice(metaIndex, 1, { meta: ['id', 'name', 'description', 'image', 'animationUrl', 'type'] } as any)
+    if (metaIndex !== -1) {
+      list.splice(metaIndex, 1, { meta: ['id', 'name', 'description', 'image', 'animationUrl', 'type'] } as any)
+    }
   }
-
   return list
 }
 

@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@kodadot1/static':
-    specifier: 0.0.3-rc.5
-    version: 0.0.3-rc.5
+    specifier: 0.0.3
+    version: 0.0.3
   gql-query-builder:
     specifier: ^3.8.0
     version: 3.8.0
@@ -590,8 +590,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kodadot1/static@0.0.3-rc.5:
-    resolution: {integrity: sha512-GBGq8BrL2VHRbI6z6If4mHzT39sWwDa2ZKJf2AOkLkw5xVrz2dGDZbvLKszRJDSiQs7mRSEwmekHKjIwiqsvTA==}
+  /@kodadot1/static@0.0.3:
+    resolution: {integrity: sha512-V9WIHN8LZMeKHRyJ86TnAya2y6Mi9bRBYXS0hX9NVfPzrmnlzSPkx/cXyDiqewduAT+OrjfscQaiFvN2iEJymw==}
     dev: false
 
   /@nodelib/fs.scandir@2.1.5:
@@ -2902,13 +2902,6 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /magic-string@0.30.0:
-    resolution: {integrity: sha512-LA+31JYDJLs82r2ScLrlz1GjSgu66ZV518eyWT+S8VhyQn/JL0u9MeBOvQMGYiPk1DBiSN9DDMOcXvigJZaViQ==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.4.15
-    dev: true
-
   /magic-string@0.30.2:
     resolution: {integrity: sha512-lNZdu7pewtq/ZvWUp9Wpf/x7WzMTsR26TWV03BRZrXFsv+BI6dy8RAiKgm1uM/kyR0rCfUcqvOlXKG66KhIGug==}
     engines: {node: '>=12'}
@@ -3854,7 +3847,7 @@ packages:
       globby: 13.1.4
       hookable: 5.5.3
       jiti: 1.18.2
-      magic-string: 0.30.0
+      magic-string: 0.30.2
       mkdist: 1.2.0(typescript@5.1.6)
       mlly: 1.4.0
       mri: 1.2.0
