@@ -35,10 +35,10 @@
     "ufo": "^1.3.0"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "latest",
     "c8": "latest",
     "changelogen": "^0.5.5",
     "eslint": "latest",
+    "eslint-config-unjs": "latest",
     "typescript": "latest",
     "unbuild": "latest",
     "vitest": "latest"
