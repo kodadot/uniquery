@@ -1,6 +1,6 @@
 {
   "extends": [
-    "@nuxtjs/eslint-config-typescript"
+    "eslint-config-unjs"
   ],
   "rules": {
     "space-before-function-paren": "off"
