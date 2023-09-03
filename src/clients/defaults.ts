@@ -1,4 +1,5 @@
-import { ObjProp, Fields, QueryOptions, BaseEvent, AbstractBase, QueryProps } from '../types'
+import { IOperation } from 'gql-query-builder/build/IQueryBuilderOptions'
+import { ObjProp, Fields, QueryOptions, BaseEvent, AbstractBase, QueryProps, QueryEntity } from '../types'
 
 export const defaultField: ObjProp<AbstractBase> = ['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer']
 export const defaultEventField: ObjProp<BaseEvent> = ['id', 'interaction', 'timestamp', 'caller', 'meta']
@@ -68,4 +69,14 @@ export function includeBurned<T = unknown>(options?: QueryProps<T>): Burned {
   }
 
   return 'burned_eq: false'
+}
+
+type Alias = `${QueryEntity}: ${string}`
+export const entityMap: Record<QueryEntity, Alias> = {
+  collection: 'collection: collectionEntityById',
+  collections: 'collections: collectionEntities',
+  event: 'event: eventEntityById',
+  events: 'events: events',
+  item: 'item: nftEntityById',
+  items: 'items: nftEntities'
 }
