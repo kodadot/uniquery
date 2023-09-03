@@ -75,8 +75,11 @@ type Alias = `${QueryEntity}: ${string}`
 export const entityMap: Record<QueryEntity, Alias> = {
   collection: 'collection: collectionEntityById',
   collections: 'collections: collectionEntities',
+  collectionCount: 'collectionCount: collectionEntitiesConnection',
   event: 'event: eventEntityById',
   events: 'events: events',
+  eventCount: 'eventCount: eventsConnection',
   item: 'item: nftEntityById',
-  items: 'items: nftEntities'
+  items: 'items: nftEntities',
+  itemCount: 'itemCount: nftEntitiesConnection',
 }
