@@ -12,9 +12,9 @@ import { defaultEventField, getFields, includeBurned, optionToQuery } from './de
 class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
   private prefix?: Prefix
 
-  constructor(prefix?: Prefix) {
-    if (prefix) {
-      this.prefix = prefix
+  constructor(...args: [Prefix?]) {
+    if (args.length === 1 && typeof args[0] !== 'undefined') {
+      this.prefix = args[0]
     }
   }
 
