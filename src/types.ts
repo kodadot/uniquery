@@ -99,6 +99,7 @@ export type Or<A, B> = A | B
 // }
 
 export type FilterType = 'blockNumber' | 'updatedAt' | 'price' | 'sn'
+export type QueryEntity = 'collection' | 'collections' | 'event' | 'events' | 'item' | 'items'
 export type FilterOrderDirection = 'ASC' | 'DESC'
 export type FilterOrderType = [FilterOrderDirection, FilterOrderDirection?]
 export type FilterBuilder = [FilterType, FilterOrderType?]
