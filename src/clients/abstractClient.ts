@@ -33,6 +33,30 @@ interface AbstractClient<C, T, E = BaseEvent> {
   itemListCreatedAfter(date: Date, options?: QueryProps<T>): GraphQuery
   // collectionStatListById(id: string, options?: QueryProps<T>): GraphQuery
   // lastItemIdbyCollectionId(id: string, options?: QueryProps<T>): GraphQuery
+
+  // COUNTING QUERTIES
+
+  // collectionCountByIssuer(issuer: string): GraphQuery ;
+  // collectionCountByName(name: string): GraphQuery ;
+  // collectionCountByOwner(owner: string): GraphQuery ;
+  // collectionCountCreatedAfter(date: Date): GraphQuery ;
+  // eventCountByAddress(address: string): GraphQuery ;
+  // eventCountByCollectionId(id: string): GraphQuery ;
+  // eventCountByInteraction(interaction: string): GraphQuery ;
+  // eventCountByItemId(id: string): GraphQuery ;
+  // itemCountByOwner(owner: string): GraphQuery ;
+  // itemCountByIssuer(issuer: string): GraphQuery ;
+  // itemCountByName(name: string): GraphQuery ;
+  // itemCountCollectedBy(address: string): GraphQuery ;
+  // itemCountSoldBy(address: string): GraphQuery ;
+  // itemCountByCollectionId(id: string): GraphQuery ;
+  // itemCountForSale(): GraphQuery ;
+  // itemCountForSaleByCollectionId(id: string): GraphQuery ;
+  // itemCountByCollectionIdAndOwner(id: string, owner: string): GraphQuery ;
+  // itemCountByMetadataId(id: string): GraphQuery ;
+  // itemCountByMetadataIdMatch(id: string): GraphQuery ;
+  // itemCountCreatedAfter(date: Date): GraphQuery ;
+
   fetch<D>(query: GraphQuery): Promise<GraphLike<D>>
 }
 
