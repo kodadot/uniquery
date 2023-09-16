@@ -1,4 +1,3 @@
-import { IOperation } from 'gql-query-builder/build/IQueryBuilderOptions'
 import { ObjProp, Fields, QueryOptions, BaseEvent, AbstractBase, QueryProps, QueryEntity } from '../types'
 
 export const defaultField: ObjProp<AbstractBase> = ['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer']

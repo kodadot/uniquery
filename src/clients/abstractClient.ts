@@ -1,4 +1,3 @@
-
 import { BaseEvent, GraphLike, GraphQuery, ObjProp, QueryProps } from '../types'
 // Collection, Token
 interface AbstractClient<C, T, E = BaseEvent> {
