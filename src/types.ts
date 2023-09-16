@@ -64,7 +64,7 @@ export type SquidCollection = BaseCollection & {
 }
 
 export type BaseNFT = AbstractBase & {
-  burned: Boolean
+  burned: boolean
   collection: SquidCollection
   hash: string
   instance: string
