@@ -13,7 +13,7 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
   private prefix?: Prefix
 
   constructor(...args: [Prefix?]) {
-    if (args.length === 1 && typeof args[0] !== 'undefined') {
+    if (args.length === 1 && args[0] !== undefined) {
       this.prefix = args[0]
     }
   }
