@@ -7,11 +7,11 @@ function getUrl(chain: Prefix, provider: Or<Provider, ''> = ''): string {
   const result: string | undefined = INDEXERS[chain]
 
   if (!result || provider === 'subquery') {
-    const message = !chain
-      ? `Cannot use fetch for non-existinng chain, add parameter prefix when calling getClient or fetchQuery`
-      : `Indexer for chain ${chain} not found, allowed values are ${Object.keys(
+    const message = chain
+      ? `Indexer for chain ${chain} not found, allowed values are ${Object.keys(
           INDEXERS
         )}`
+      : `Cannot use fetch for non-existinng chain, add parameter prefix when calling getClient or fetchQuery`
     throw new ReferenceError(message)
   }
 
