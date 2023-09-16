@@ -3,6 +3,9 @@
     "eslint-config-unjs"
   ],
   "rules": {
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "unicorn/filename-case": "off",
+    "unicorn/no-array-callback-reference": "off"
+
   }
 }
