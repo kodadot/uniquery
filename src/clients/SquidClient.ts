@@ -7,7 +7,7 @@ import build from '../queryBuilder'
 import { BaseEvent, GraphLike, GraphQuery, KeyOf, ObjProp, QueryProps, SquidCollection, SquidNFT } from '../types'
 
 import AbstractClient from './abstractClient'
-import { defaultEventField, getFields, includeBurned, optionToQuery } from './defaults'
+import { defaultEventField, entityMap, genericCountQuery, getFields, includeBurned, optionToQuery, strOf } from './defaults'
 
 class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
   private prefix?: Prefix
@@ -21,6 +21,26 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
   collectionById(id: string, fields?: ObjProp<SquidCollection>): GraphQuery {
     const toQuery = getFields(fields)
     return build('collection: collectionEntityById', toQuery, { id: { type: 'String', required: true, value: id, name: 'id' } })
+  }
+
+  collectionCountByIssuer(issuer: string): GraphQuery {
+    const { operation, fields, variables } = genericCountQuery('collection', { issuer_eq: strOf(issuer) })
+    return build(operation, fields, variables)
+  }
+
+  collectionCountByName(name: string): GraphQuery {
+    const gcq = genericCountQuery('collection', { name_containsInsensitive: strOf(name) })
+    return build(gcq.operation, gcq.fields, gcq.variables)
+  }
+
+  collectionCountByOwner(owner: string): GraphQuery {
+    const gcq = genericCountQuery('collection', { owner_eq: strOf(owner) })
+    return build(gcq.operation, gcq.fields, gcq.variables)
+  }
+
+  collectionCountCreatedAfter(date: Date): GraphQuery {
+    const gcq = genericCountQuery('collection', { createdAt_gte: strOf(date.toISOString()) })
+    return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   collectionListBy(id: string, field: KeyOf<SquidCollection>, options?: QueryProps<SquidCollection>): GraphQuery {
