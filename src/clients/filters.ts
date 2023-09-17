@@ -12,10 +12,9 @@ function generateFilters(
   mappingFn: FilterMappingFn
 ): string[] {
   return filters
-    .map(([type, directions]) =>
+    .flatMap(([type, directions]) =>
       getFilterOrders(directions).map(direction => mappingFn(type, direction))
     )
-    .flat()
 }
 
 /* deprecated */

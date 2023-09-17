@@ -6,4 +6,5 @@ export { extendFields } from './clients/defaults'
 export { fetchQuery, graphFetch } from './indexers'
 export * from './rest'
 
+// eslint-disable-next-line unicorn/prefer-export-from
 export { SquidClient, getClient, getUrl }

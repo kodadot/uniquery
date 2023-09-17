@@ -8,6 +8,12 @@ export type KeyValue = {
   [k: string]: any;
 }
 
+type GraphType = any
+
+export type StrictKeyValue = {
+  [k: string]: any |  { value: any, required?: boolean, type?: GraphType, list?: boolean, name?: string  }
+}
+
 export type GraphQuery = {
   query: string
   variables: any
@@ -64,7 +70,7 @@ export type SquidCollection = BaseCollection & {
 }
 
 export type BaseNFT = AbstractBase & {
-  burned: Boolean
+  burned: boolean
   collection: SquidCollection
   hash: string
   instance: string
@@ -99,6 +105,7 @@ export type Or<A, B> = A | B
 // }
 
 export type FilterType = 'blockNumber' | 'updatedAt' | 'price' | 'sn'
+export type QueryEntity = 'collection' | 'collections' | 'event' | 'events' | 'item' | 'items' | 'collectionCount' | 'itemCount' | 'eventCount'
 export type FilterOrderDirection = 'ASC' | 'DESC'
 export type FilterOrderType = [FilterOrderDirection, FilterOrderDirection?]
 export type FilterBuilder = [FilterType, FilterOrderType?]

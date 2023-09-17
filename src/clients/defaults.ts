@@ -1,4 +1,4 @@
-import { ObjProp, Fields, QueryOptions, BaseEvent, AbstractBase, QueryProps } from '../types'
+import { ObjProp, Fields, QueryOptions, BaseEvent, AbstractBase, QueryProps, QueryEntity } from '../types'
 
 export const defaultField: ObjProp<AbstractBase> = ['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer']
 export const defaultEventField: ObjProp<BaseEvent> = ['id', 'interaction', 'timestamp', 'caller', 'meta']
@@ -68,4 +68,60 @@ export function includeBurned<T = unknown>(options?: QueryProps<T>): Burned {
   }
 
   return 'burned_eq: false'
+}
+
+export function strOf<T>(value: T): string {
+  return `"${value}"`
+}
+
+type Alias = `${QueryEntity}: ${string}`
+export const entityMap: Record<QueryEntity, Alias> = {
+  collection: 'collection: collectionEntityById',
+  collections: 'collections: collectionEntities',
+  collectionCount: 'collectionCount: collectionEntitiesConnection',
+  event: 'event: eventEntityById',
+  events: 'events: events',
+  eventCount: 'eventCount: eventsConnection',
+  item: 'item: nftEntityById',
+  items: 'items: nftEntities',
+  itemCount: 'itemCount: nftEntitiesConnection',
+}
+
+type GraphEntity = 'collection' | 'item' | 'event'
+export const realEntityName: Record<GraphEntity, string> = {
+  collection: 'CollectionEntity',
+  item: 'NFTEntity',
+  event: 'Event'
+}
+
+function addWhere(whereType: string, whereValue?: any) {
+  if (whereValue) {
+    return {
+      where: {
+        type: whereType,
+        value: whereValue
+      }
+    }
+  }
+
+  return {}
+}
+
+
+type OperationName = `${GraphEntity}Count`
+export function genericCountQuery(entity: GraphEntity, whereValue?: any) {
+  const name = entity + 'Count' as OperationName
+  const operation = entityMap[name]
+  const types = realEntityName[entity]
+  const whereType = `${types}WhereInput`
+  const where = addWhere(whereType, whereValue)
+  return {
+    operation,
+    fields: ['totalCount'],
+    variables: {
+      orderBy: { value: 'id_ASC', type: `[${types}OrderByInput!]!` },
+      ...where
+    },
+    whereType: `${types}WhereInput`
+  }
 }
