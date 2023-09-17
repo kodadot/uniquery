@@ -8,6 +8,12 @@ export type KeyValue = {
   [k: string]: any;
 }
 
+type GraphType = any
+
+export type StrictKeyValue = {
+  [k: string]: any |  { value: any, required?: boolean, type?: GraphType, list?: boolean, name?: string  }
+}
+
 export type GraphQuery = {
   query: string
   variables: any
