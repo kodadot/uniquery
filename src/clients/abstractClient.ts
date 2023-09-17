@@ -19,16 +19,16 @@ interface AbstractClient<C, T, E = BaseEvent> {
   eventListByInteraction(interaction: string, options?: QueryProps<E>): GraphQuery
   eventListByItemId(id: string, options?: QueryProps<E>): GraphQuery
   itemById(id: string, fields?: ObjProp<T>): GraphQuery
-  // itemCountByOwner(owner: string): GraphQuery ;
-  // itemCountByIssuer(issuer: string): GraphQuery ;
-  // itemCountByName(name: string): GraphQuery ;
-  // itemCountCollectedBy(address: string): GraphQuery ;
-  // itemCountSoldBy(address: string): GraphQuery ;
-  // itemCountByCollectionId(id: string): GraphQuery ;
-  // itemCountForSale(): GraphQuery ;
-  // itemCountForSaleByCollectionId(id: string): GraphQuery ;
-  // itemCountByCollectionIdAndOwner(id: string, owner: string): GraphQuery ;
-  // itemCountCreatedAfter(date: Date): GraphQuery ;
+  itemCountByOwner(owner: string): GraphQuery ;
+  itemCountByIssuer(issuer: string): GraphQuery ;
+  itemCountByName(name: string): GraphQuery ;
+  itemCountCollectedBy(address: string): GraphQuery ;
+  itemCountSoldBy(address: string): GraphQuery ;
+  itemCountByCollectionId(id: string): GraphQuery ;
+  itemCountForSale(): GraphQuery ;
+  itemCountForSaleByCollectionId(id: string): GraphQuery ;
+  itemCountByCollectionIdAndOwner(id: string, owner: string): GraphQuery ;
+  itemCountCreatedAfter(date: Date): GraphQuery ;
   // itemListBy(id: string, field: KeyOf<T>, fields?: ObjProp<T>): GraphQuery
   itemListByCollectionId(id: string, options?: QueryProps<T>): GraphQuery
   itemListByCollectionIdAndOwner(id: string, owner: string, options?: QueryProps<T>): GraphQuery
