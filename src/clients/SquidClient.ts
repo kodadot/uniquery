@@ -24,22 +24,22 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
   }
 
   collectionCountByIssuer(issuer: string): GraphQuery {
-    const { operation, fields, variables } = genericCountQuery('collection', { issuer_eq: strOf(issuer) })
+    const { operation, fields, variables } = genericCountQuery('collection', { issuer_eq: issuer })
     return build(operation, fields, variables)
   }
 
   collectionCountByName(name: string): GraphQuery {
-    const gcq = genericCountQuery('collection', { name_containsInsensitive: strOf(name) })
+    const gcq = genericCountQuery('collection', { name_containsInsensitive: name })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   collectionCountByOwner(owner: string): GraphQuery {
-    const gcq = genericCountQuery('collection', { owner_eq: strOf(owner) })
+    const gcq = genericCountQuery('collection', { currentOwner_eq: owner })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   collectionCountCreatedAfter(date: Date): GraphQuery {
-    const gcq = genericCountQuery('collection', { createdAt_gte: strOf(date.toISOString()) })
+    const gcq = genericCountQuery('collection', { createdAt_gte: date.toISOString() })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
@@ -109,57 +109,55 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
   }
 
   itemCountByOwner(owner: string): GraphQuery {
-    const gcq = genericCountQuery('item', { owner_eq: strOf(owner) })
+    const gcq = genericCountQuery('item', { currentOwner_eq: owner })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   itemCountByIssuer(issuer: string): GraphQuery {
-    const { operation, fields, variables } = genericCountQuery('item', { issuer_eq: strOf(issuer) })
+    const { operation, fields, variables } = genericCountQuery('item', { issuer_eq: issuer })
     return build(operation, fields, variables)
   }
 
   itemCountByName(name: string): GraphQuery {
-    const gcq = genericCountQuery('item', { name_containsInsensitive: strOf(name) })
+    const gcq = genericCountQuery('item', { name_containsInsensitive: name })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   itemCountCollectedBy(address: string): GraphQuery {
-    const value = strOf(address)
-    const gcq = genericCountQuery('item', { currentOwner_eq: value, issuer_not_eq: value  })
+    const gcq = genericCountQuery('item', { currentOwner_eq: address, issuer_not_eq: address  })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   itemCountSoldBy(address: string): GraphQuery {
-    const value = strOf(address)
-    const gcq = genericCountQuery('item', { currentOwner_not_eq: value, issuer_eq: value  })
+    const gcq = genericCountQuery('item', { currentOwner_not_eq: address, issuer_eq: address  })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   itemCountByCollectionId(id: string): GraphQuery {
-    const value = { id_eq: strOf(id) }
+    const value = { id_eq: id }
     const gcq = genericCountQuery('item', { collection: value })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   itemCountForSale(): GraphQuery {
-    const gcq = genericCountQuery('item', { price_gt: strOf(0) })
+    const gcq = genericCountQuery('item', { price_gt: 0 })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   itemCountForSaleByCollectionId(id: string): GraphQuery {
-    const value = { id_eq: strOf(id) }
-    const gcq = genericCountQuery('item', { collection: value, price_gt: strOf(0) })
+    const value = { id_eq: id }
+    const gcq = genericCountQuery('item', { collection: value, price_gt: 0 })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   itemCountByCollectionIdAndOwner(id: string, owner: string): GraphQuery {
-    const value = { id_eq: strOf(id) }
-    const gcq = genericCountQuery('item', { collection: value, currentOwner_eq: strOf(owner) })
+    const value = { id_eq: id }
+    const gcq = genericCountQuery('item', { collection: value, currentOwner_eq: owner })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
   itemCountCreatedAfter(date: Date): GraphQuery {
-    const gcq = genericCountQuery('item', { createdAt_gte: strOf(date.toISOString()) })
+    const gcq = genericCountQuery('item', { createdAt_gte: date.toISOString() })
     return build(gcq.operation, gcq.fields, gcq.variables)
   }
 
