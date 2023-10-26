@@ -21,6 +21,16 @@ interface AbstractClient<C, T, E = BaseEvent> {
     options?: QueryProps<E>,
   ): GraphQuery
   eventListByItemId(id: string, options?: QueryProps<E>): GraphQuery
+  eventListByItemIdAndInteraction(
+    id: string,
+    interaction: string,
+    options?: QueryProps<E>,
+  ): GraphQuery
+  eventListByItemIdAndInteractionList(
+    id: string,
+    interactions: string[],
+    options?: QueryProps<E>,
+  ): GraphQuery
   itemById(id: string, fields?: ObjProp<T>): GraphQuery
   itemCountByOwner(owner: string): GraphQuery
   itemCountByIssuer(issuer: string): GraphQuery
