@@ -8,9 +8,11 @@ function getUrl(chain: Prefix, provider: Or<Provider, ''> = ''): string {
 
   if (!result || provider === 'subquery') {
     const message = chain
-      ? `Indexer for chain ${chain} not found, allowed values are ${Object.keys(
-          INDEXERS
-        )}`
+      ? `Indexer for chain ${chain} not found, allowed values are ${
+        Object.keys(
+          INDEXERS,
+        )
+      }`
       : `Cannot use fetch for non-existinng chain, add parameter prefix when calling getClient or fetchQuery`
     throw new ReferenceError(message)
   }
@@ -18,12 +20,18 @@ function getUrl(chain: Prefix, provider: Or<Provider, ''> = ''): string {
   return result
 }
 
-export function graphFetch<D>(baseURL: string, query: GraphQuery): Promise<GraphLike<D>> {
+export function graphFetch<D>(
+  baseURL: string,
+  query: GraphQuery,
+): Promise<GraphLike<D>> {
   const opts = getOptions({ query, baseURL, path: '' })
   return $fetch<GraphLike<D>>(baseURL, opts)
 }
 
-export function fetchQuery<D>(prefix: Prefix, query: GraphQuery): Promise<GraphLike<D>> {
+export function fetchQuery<D>(
+  prefix: Prefix,
+  query: GraphQuery,
+): Promise<GraphLike<D>> {
   const baseURL = getUrl(prefix)
   return graphFetch<D>(baseURL, query)
 }
