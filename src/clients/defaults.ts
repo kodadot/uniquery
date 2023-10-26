@@ -1,30 +1,63 @@
-import { ObjProp, Fields, QueryOptions, BaseEvent, AbstractBase, QueryProps, QueryEntity } from '../types'
+import {
+  AbstractBase,
+  BaseEvent,
+  Fields,
+  ObjProp,
+  QueryEntity,
+  QueryOptions,
+  QueryProps,
+} from '../types'
 
-export const defaultField: ObjProp<AbstractBase> = ['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer']
-export const defaultEventField: ObjProp<BaseEvent> = ['id', 'interaction', 'timestamp', 'caller', 'meta']
+export const defaultField: ObjProp<AbstractBase> = [
+  'id',
+  'createdAt',
+  'name',
+  'metadata',
+  'currentOwner',
+  'issuer',
+]
+export const defaultEventField: ObjProp<BaseEvent> = [
+  'id',
+  'interaction',
+  'timestamp',
+  'caller',
+  'meta',
+]
 export const DEFAULT_LIMIT = 100
 // todo: add default orderBy
 export const defaultQueryOptions: QueryOptions = {
-  limit: DEFAULT_LIMIT
+  limit: DEFAULT_LIMIT,
 }
 
 function hasMetaField(field: any): boolean {
   return typeof field === 'string' && field === 'meta'
 }
 
-export function extendFields<T extends AbstractBase>(fields: ObjProp<T>): ObjProp<T> {
+export function extendFields<T extends AbstractBase>(
+  fields: ObjProp<T>,
+): ObjProp<T> {
   const set = new Set([...defaultField, ...fields])
   return [...set]
 }
 
-export function getFields<T>(fields?: ObjProp<T>, defaultList: ObjProp<T> | string[] = defaultField, replaceMetaField = true): Fields<T> {
+export function getFields<T>(
+  fields?: ObjProp<T>,
+  defaultList: ObjProp<T> | string[] = defaultField,
+  replaceMetaField = true,
+): Fields<T> {
   const list = fields ?? defaultList
 
   if (replaceMetaField) {
     const metaIndex = list.findIndex(hasMetaField)
 
     if (metaIndex !== -1) {
-      list.splice(metaIndex, 1, { meta: ['id', 'name', 'description', 'image', 'animationUrl', 'type'] } as any)
+      list.splice(
+        metaIndex,
+        1,
+        {
+          meta: ['id', 'name', 'description', 'image', 'animationUrl', 'type'],
+        } as any,
+      )
     }
   }
   return list
@@ -36,7 +69,7 @@ export function wrapSubqueryList<T>(fields: Fields<T>): [{ nodes: Fields<T> }] {
 
 export function optionToQuery(
   options: QueryOptions,
-  injectDefault = true
+  injectDefault = true,
 ): string {
   const final = injectDefault ? ensureOptions(options) : options
   let query = ''
@@ -57,7 +90,10 @@ export function ensureOptions(options?: QueryOptions): QueryOptions {
   return {
     ...defaultQueryOptions,
     ...queryOptions,
-    limit: Math.min(queryOptions.limit ?? DEFAULT_LIMIT, defaultQueryOptions.limit)
+    limit: Math.min(
+      queryOptions.limit ?? DEFAULT_LIMIT,
+      defaultQueryOptions.limit,
+    ),
   }
 }
 
@@ -91,7 +127,7 @@ type GraphEntity = 'collection' | 'item' | 'event'
 export const realEntityName: Record<GraphEntity, string> = {
   collection: 'CollectionEntity',
   item: 'NFTEntity',
-  event: 'Event'
+  event: 'Event',
 }
 
 function addWhere(whereType: string, whereValue?: any) {
@@ -99,14 +135,13 @@ function addWhere(whereType: string, whereValue?: any) {
     return {
       where: {
         type: whereType,
-        value: whereValue
-      }
+        value: whereValue,
+      },
     }
   }
 
   return {}
 }
-
 
 type OperationName = `${GraphEntity}Count`
 export function genericCountQuery(entity: GraphEntity, whereValue?: any) {
@@ -120,8 +155,8 @@ export function genericCountQuery(entity: GraphEntity, whereValue?: any) {
     fields: ['totalCount'],
     variables: {
       orderBy: { value: 'id_ASC', type: `[${types}OrderByInput!]!` },
-      ...where
+      ...where,
     },
-    whereType: `${types}WhereInput`
+    whereType: `${types}WhereInput`,
   }
 }
