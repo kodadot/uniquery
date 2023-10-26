@@ -3,11 +3,11 @@ import { GraphLike, GraphRequest } from '../rest/types'
 
 export const getOptions = ({
   baseURL,
-  query
+  query,
 }: GraphRequest): FetchOptions<'json'> => ({
   baseURL,
   method: 'POST',
-  body: query
+  body: query,
 })
 
 export const uwrapRequest = <T>(req: GraphLike<T>): T => {
