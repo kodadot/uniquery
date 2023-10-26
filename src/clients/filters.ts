@@ -1,5 +1,9 @@
 import {
-  FilterBuilder, FilterMappingFn, FilterOrderDirection, FilterOrderType, FilterType
+  FilterBuilder,
+  FilterMappingFn,
+  FilterOrderDirection,
+  FilterOrderType,
+  FilterType,
 } from '../types'
 
 export function getFilters(filters: FilterBuilder[]) {
@@ -9,11 +13,11 @@ export function getFilters(filters: FilterBuilder[]) {
 
 function generateFilters(
   filters: FilterBuilder[],
-  mappingFn: FilterMappingFn
+  mappingFn: FilterMappingFn,
 ): string[] {
   return filters
     .flatMap(([type, directions]) =>
-      getFilterOrders(directions).map(direction => mappingFn(type, direction))
+      getFilterOrders(directions).map((direction) => mappingFn(type, direction))
     )
 }
 
@@ -28,20 +32,20 @@ function generateFilters(
 
 function subsquidFilterMapping(
   filter: FilterType,
-  direction: FilterOrderDirection
+  direction: FilterOrderDirection,
 ): string {
   return appendFilterDirection(filter, direction)
 }
 
 function appendFilterDirection(
   filter: string,
-  direction: FilterOrderDirection
+  direction: FilterOrderDirection,
 ) {
   return filter + '_' + direction
 }
 
 function getFilterOrders(
-  filterOrders: FilterOrderType
+  filterOrders: FilterOrderType,
 ): FilterOrderDirection[] {
   if (!filterOrders) {
     return ['ASC', 'DESC']

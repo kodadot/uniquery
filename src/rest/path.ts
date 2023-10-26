@@ -22,7 +22,7 @@ const pathMap: Record<string, ClientCall> = {
   itemByOwner: 'itemListByOwner',
   itemCollectedBy: 'itemListCollectedBy',
   itemForSaleByCollection: 'itemListForSaleByCollectionId',
-  itemSoldBy: 'itemListSoldBy'
+  itemSoldBy: 'itemListSoldBy',
 }
 
 export const parsePath = (pathname: string): string[] => {
@@ -37,7 +37,11 @@ const supportChain = (chain: string | undefined): boolean => {
 }
 
 const urlOf = (path: string): $URL => new $URL(path)
-const makeQuery = (call: string, id: string, options?: QueryProps<any>): GraphQuery => {
+const makeQuery = (
+  call: string,
+  id: string,
+  options?: QueryProps<any>,
+): GraphQuery => {
   const client = getClient()
   const method = getCall(call)
   const fn: any | undefined = client[method]
@@ -50,7 +54,10 @@ const makeQuery = (call: string, id: string, options?: QueryProps<any>): GraphQu
 
 // /bsx/item/:id
 // TODO: should return GraphRequest
-export function pathToRequest(path: string, options?: QueryProps<any>): GraphRequest {
+export function pathToRequest(
+  path: string,
+  options?: QueryProps<any>,
+): GraphRequest {
   const { pathname } = urlOf(path) // query: options
   const [chain, call, id] = parsePath(pathname)
   if (!hasCall(call) || !supportChain(chain)) {

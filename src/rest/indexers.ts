@@ -3,4 +3,5 @@ import { Prefix } from './types'
 
 export const getUrl = (chain: Prefix | ''): string => INDEXERS[chain]
 
-export const getAvailableChains = (): Prefix[] => Object.keys(INDEXERS) as Prefix[]
+export const getAvailableChains = (): Prefix[] =>
+  Object.keys(INDEXERS) as Prefix[]
