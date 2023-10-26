@@ -23,7 +23,7 @@ export const defaultEventField: ObjProp<BaseEvent> = [
   'caller',
   'meta',
 ]
-export const DEFAULT_LIMIT = 100
+export const DEFAULT_LIMIT = 200
 // todo: add default orderBy
 export const defaultQueryOptions: QueryOptions = {
   limit: DEFAULT_LIMIT,
