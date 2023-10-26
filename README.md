@@ -130,8 +130,12 @@ From REST:
 - eventList - returns all events
 - eventListByAddress - returns events by address
 - eventListByCollectionId - returns events for nfts that belong to collection
+- eventListByCollectionIdAndInteraction - returns events for nfts that belong to collection and interaction
+- eventListByCollectionIdAndInteractionList - returns events for nfts that belong to collection and list of interactions
 - eventListByInteraction - returns events by interaction
 - eventListByItemId - returns events by nft id
+- eventListByItemIdAndInteraction - returns events by nft id and interaction
+- eventListByItemIdAndInteractionList - returns events by nft id and list of interactions
 - itemById - returns NFT by id
 - itemListByCollectionId - returns NFTs where collection id is equal to provided id
 - itemListByCollectionIdAndOwner - returns NFTs where collection id is equal to provided id and owner is equal to provided address
@@ -172,8 +176,6 @@ Please open a pull-request if you know how to fix this
 ### ✔️  Missing functions
 
 - collectionStatListById - returns collection metrics by id
-- eventListByCollectionId - returns events for NFTs by collection id
-- eventListByCollectionIdAndInteraction - returns events for NFTs by collection id and interaction
 - lastNftIdbyCollectionId - returns last token id for collection by id
 
 ## Development 💻
