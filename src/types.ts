@@ -1,17 +1,23 @@
 export type KeyOf<T> = keyof T
 export type ObjProp<T> = Array<KeyOf<T>>
 // FieldList is a type that can is array containing either a string or an object that contains a string array
-export type FieldList = Array<string | { [ meta: string ]: string[] }>
+export type FieldList = Array<string | { [meta: string]: string[] }>
 
 export type Fields<T> = FieldList | ObjProp<T>
 export type KeyValue = {
-  [k: string]: any;
+  [k: string]: any
 }
 
 type GraphType = any
 
 export type StrictKeyValue = {
-  [k: string]: any |  { value: any, required?: boolean, type?: GraphType, list?: boolean, name?: string  }
+  [k: string]: any | {
+    value: any
+    required?: boolean
+    type?: GraphType
+    list?: boolean
+    name?: string
+  }
 }
 
 export type GraphQuery = {
@@ -105,8 +111,20 @@ export type Or<A, B> = A | B
 // }
 
 export type FilterType = 'blockNumber' | 'updatedAt' | 'price' | 'sn'
-export type QueryEntity = 'collection' | 'collections' | 'event' | 'events' | 'item' | 'items' | 'collectionCount' | 'itemCount' | 'eventCount'
+export type QueryEntity =
+  | 'collection'
+  | 'collections'
+  | 'event'
+  | 'events'
+  | 'item'
+  | 'items'
+  | 'collectionCount'
+  | 'itemCount'
+  | 'eventCount'
 export type FilterOrderDirection = 'ASC' | 'DESC'
 export type FilterOrderType = [FilterOrderDirection, FilterOrderDirection?]
 export type FilterBuilder = [FilterType, FilterOrderType?]
-export type FilterMappingFn = (filter: FilterType, direction: FilterOrderDirection) => string
+export type FilterMappingFn = (
+  filter: FilterType,
+  direction: FilterOrderDirection,
+) => string
