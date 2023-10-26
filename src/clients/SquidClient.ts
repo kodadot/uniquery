@@ -151,7 +151,7 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
     const toQuery = getFields(options?.fields, defaultEventField, false)
     const optionList = optionToQuery(options, true)
     return build(
-      `events(where: {nft: {id_eq: "${id}"}} ${optionList})`,
+      `events(where: {nft: { collection: {id_eq: "${id}"}}} ${optionList})`,
       toQuery,
     )
     // events(where: { nft: { collection: { id_eq: "" }}})
