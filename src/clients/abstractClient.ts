@@ -15,7 +15,8 @@ interface AbstractClient<C, T, E = BaseEvent> {
   eventList(options?: QueryProps<E>): GraphQuery
   eventListByAddress(address: string, options?: QueryProps<E>): GraphQuery
   eventListByCollectionId(id: string, options?: QueryProps<E>): GraphQuery
-  // eventListByCollectionIdAndInteraction(id: string, interaction: string, options?: QueryProps<E>): GraphQuery
+  eventListByCollectionIdAndInteraction(id: string, interaction: string, options?: QueryProps<E>): GraphQuery
+  eventListByCollectionIdAndInteractionList(id: string, interactions: string[], options?: QueryProps<E>): GraphQuery
   eventListByInteraction(
     interaction: string,
     options?: QueryProps<E>,
