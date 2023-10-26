@@ -4,7 +4,7 @@ import { GraphQuery, Or } from '../types'
 export { GraphLike } from '../types'
 
 export type GraphRequest = {
-  baseURL: string,
+  baseURL: string
   query: GraphQuery
   path: string
 }
