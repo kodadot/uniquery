@@ -16,6 +16,7 @@ describe('UNIQUERY UTILS', () => {
     })
 
     it('should throw on subquery kusama indexer', () => {
+      // eslint-disable-next-line unicorn/consistent-function-scoping
       const fn = () => getUrl('ksm', 'subquery')
       expect(fn).toThrow(ReferenceError)
     })
@@ -32,7 +33,7 @@ describe('UNIQUERY UTILS', () => {
 
     it('should return default Kusama Asset Hub indexer', () => {
       const url = getUrl('ahk')
-      expect(url).eq('https://squid.subsquid.io/stick/graphql')
+      expect(url).eq('https://query-stick.stellate.sh')
     })
 
     it('should return default Polkadot Asset Hub indexer', () => {
@@ -44,7 +45,7 @@ describe('UNIQUERY UTILS', () => {
   describe('getFields', () => {
     it('should return default fields', () => {
       const fields = getFields<SquidNFT>()
-      expect(fields).toStrictEqual(['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer'])
+      expect(fields).toStrictEqual(['id', 'createdAt', 'name', 'image', 'metadata', 'currentOwner', 'issuer'])
     })
 
     it('should return only specified fields', () => {
@@ -61,12 +62,12 @@ describe('UNIQUERY UTILS', () => {
   describe('extendFields', () => {
     it('should return default fields', () => {
       const fields = extendFields<SquidNFT>(['meta'])
-      expect(fields).toStrictEqual(['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer', 'meta'])
+      expect(fields).toStrictEqual(['id', 'createdAt', 'name', 'image', 'metadata', 'currentOwner', 'issuer', 'meta'])
     })
 
     it('should return unique fields', () => {
       const fields = extendFields<SquidNFT>(['id', 'metadata', 'name', 'meta'])
-      expect(fields).toStrictEqual(['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer', 'meta'])
+      expect(fields).toStrictEqual(['id', 'createdAt', 'name', 'image', 'metadata', 'currentOwner', 'issuer', 'meta'])
     })
   })
 
