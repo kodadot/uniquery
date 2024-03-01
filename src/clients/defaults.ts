@@ -12,6 +12,7 @@ export const defaultField: ObjProp<AbstractBase> = [
   'id',
   'createdAt',
   'name',
+  'image',
   'metadata',
   'currentOwner',
   'issuer',
