@@ -4,17 +4,17 @@ import { parsePath, pathToRequest } from '../src/rest/path'
 describe.only('Path utils', () => {
   describe('parse path should', () => {
     it('be fully defined', () => {
-      const pathname = '/bsx/item/0-1'
+      const pathname = '/ahk/item/176-1'
       const [chain, call, id] = parsePath(pathname)
-      expect(chain).eq('bsx')
+      expect(chain).eq('ahk')
       expect(call).eq('item')
-      expect(id).eq('0-1')
+      expect(id).eq('176-1')
     })
 
     it('have id undefined', () => {
-      const pathname = '/bsx/item'
+      const pathname = '/ahk/item'
       const [chain, call, id] = parsePath(pathname)
-      expect(chain).eq('bsx')
+      expect(chain).eq('ahk')
       expect(call).eq('item')
       expect(id).eq(undefined)
     })
@@ -39,8 +39,8 @@ describe.only('Path utils', () => {
 
     for (const test of tests) {
       it(test.input, () => {
-        const res = pathToRequest(`/bsx/${test.input}`)
-        expect(res.baseURL).toBe('https://squid.subsquid.io/snekk/graphql')
+        const res = pathToRequest(`/ahk/${test.input}`)
+        expect(res.baseURL).toBe('https://ahk.gql.api.kodadot.xyz/')
         expect(res).haveOwnProperty('query')
         expect(res.query).not.toBeUndefined()
       })
