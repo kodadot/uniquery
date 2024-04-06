@@ -23,22 +23,22 @@ describe('UNIQUERY UTILS', () => {
 
     it('should return default kusama indexer', () => {
       const url = getUrl('ksm')
-      expect(url).eq('https://squid.subsquid.io/marck/v/v2/graphql')
+      expect(url).eq('https://ksm.gql.api.kodadot.xyz/')
     })
 
-    it('should return default basilisk indexer', () => {
-      const url = getUrl('bsx')
-      expect(url).eq('https://squid.subsquid.io/snekk/graphql')
+    it('should return default base indexer', () => {
+      const url = getUrl('base')
+      expect(url).eq('https://squid.subsquid.io/basick/graphql')
     })
 
     it('should return default Kusama Asset Hub indexer', () => {
       const url = getUrl('ahk')
-      expect(url).eq('https://query-stick.stellate.sh')
+      expect(url).eq('https://ahk.gql.api.kodadot.xyz/')
     })
 
     it('should return default Polkadot Asset Hub indexer', () => {
       const url = getUrl('ahp')
-      expect(url).eq('https://squid.subsquid.io/speck/graphql')
+      expect(url).eq('https://ahp.gql.api.kodadot.xyz/')
     })
   })
 
