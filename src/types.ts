@@ -30,7 +30,7 @@ export type OrderBy = `${string}_${'ASC' | 'DESC'}`
 export type QueryOptions = {
   limit?: number
   offset?: number
-  orderBy?: OrderBy
+  orderBy?: OrderBy | OrderBy[]
 }
 
 export type GraphLike<T> = { data: T } | T
