@@ -1,8 +1,10 @@
+import { stringFromArray } from '../indexers/utils'
 import {
   AbstractBase,
   BaseEvent,
   Fields,
   ObjProp,
+  OrderBy,
   QueryEntity,
   QueryOptions,
   QueryProps,
@@ -81,7 +83,7 @@ export function optionToQuery(
     query += `, offset: ${final.offset}`
   }
   if (final.orderBy) {
-    query += `, orderBy: ${final.orderBy}`
+    query += `, orderBy: ${ensureOrderBy(final.orderBy)}`
   }
   return query
 }
@@ -96,6 +98,10 @@ export function ensureOptions(options?: QueryOptions): QueryOptions {
       defaultQueryOptions.limit,
     ),
   }
+}
+
+export function ensureOrderBy(orderBy?: OrderBy | OrderBy[]): string {
+  return Array.isArray(orderBy) ? stringFromArray(orderBy) : orderBy ?? '[]' // this is a trick to handle undefined
 }
 
 type Burned = '' | `burned_eq: ${false}`
