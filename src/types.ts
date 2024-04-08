@@ -25,10 +25,12 @@ export type GraphQuery = {
   variables: any
 }
 
+export type OrderBy = `${string}_${'ASC' | 'DESC'}`
+
 export type QueryOptions = {
   limit?: number
   offset?: number
-  orderBy?: string
+  orderBy?: OrderBy | OrderBy[]
 }
 
 export type GraphLike<T> = { data: T } | T

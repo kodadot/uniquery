@@ -19,3 +19,5 @@ export const uwrapRequest = <T>(req: GraphLike<T>): T => {
 
   return req as T
 }
+
+export const stringFromArray = <T>(list: T[]): string => JSON.stringify(list).replace(/"/g, '')
