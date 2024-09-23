@@ -28,7 +28,7 @@ describe('UNIQUERY UTILS', () => {
 
     it('should return default base indexer', () => {
       const url = getUrl('base')
-      expect(url).eq('https://squid.subsquid.io/basick/graphql')
+      expect(url).eq('https://kodadot.squids.live/basick/graphql')
     })
 
     it('should return default Kusama Asset Hub indexer', () => {

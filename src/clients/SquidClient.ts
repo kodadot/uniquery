@@ -40,6 +40,15 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
     })
   }
 
+  collectionByIdIn(id: string, fields?: ObjProp<SquidCollection>): GraphQuery {
+    const toQuery = getFields(fields)
+    const list = JSON.stringify(id.split(','))
+    return build(
+      `collections: collectionEntities(where: {id_in: [${list}]})`,
+      toQuery,
+    )
+  }
+
   collectionCountByIssuer(issuer: string): GraphQuery {
     const { operation, fields, variables } = genericCountQuery('collection', {
       issuer_eq: issuer,

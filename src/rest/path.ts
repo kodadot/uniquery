@@ -6,6 +6,7 @@ import { ClientCall, GraphRequest, Prefix } from './types'
 
 const pathMap: Record<string, ClientCall> = {
   collection: 'collectionById',
+  collectionByIdIn: 'collectionByIdIn',
   collectionByIssuer: 'collectionListByIssuer',
   collectionByName: 'collectionListByName',
   collectionByOwner: 'collectionListByOwner',

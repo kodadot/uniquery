@@ -20,7 +20,19 @@ describe.only('Path utils', () => {
     })
   })
 
-  describe('path to request', () => {
+  describe('collecion id in', () => {
+    const id = [
+      '0xd9a2c93ba2e9fae10fe762a42ee807bbf95764cc',
+      '0x2f36072129aabb22bd4afffca0640a3e02695925'
+    ]
+
+    it('should do something', () => {
+      const res = pathToRequest('/base/collectionByIdIn/' + id)
+      expect(res.query).not.toBeUndefined()
+    })
+  })
+
+  describe('ahk path to request', () => {
     const tests = [
       { input: 'collection/2305670031' },
       { input: 'collectionByIssuer/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' },
