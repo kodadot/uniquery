@@ -1,3 +1,7 @@
+import { Prefix as PrefixUnion } from '@kodadot1/static'
+
+export type Prefix = PrefixUnion | 'local'
+
 export type KeyOf<T> = keyof T
 export type ObjProp<T> = Array<KeyOf<T>>
 // FieldList is a type that can is array containing either a string or an object that contains a string array
