@@ -41,7 +41,7 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
 
   collectionByIdIn(id: string | string[], fields?: ObjProp<SquidCollection>): GraphQuery {
     const toQuery = getFields(fields)
-    const list = JSON.stringify(id.split(','))
+    const list = Array.isArray(id) ? id : JSON.stringify(id.split(','))
     return build(
       `collections: collectionEntities(where: {id_in: ${list}})`,
       toQuery,
