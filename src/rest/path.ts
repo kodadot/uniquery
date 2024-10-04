@@ -1,8 +1,8 @@
 import { $URL, withoutLeadingSlash } from 'ufo'
 import getClient from '../clients/factory'
-import { GraphQuery, QueryProps } from '../types'
+import { GraphQuery, Prefix, QueryProps } from '../types'
 import { getUrl } from './indexers'
-import { ClientCall, GraphRequest, Prefix } from './types'
+import { ClientCall, GraphRequest } from './types'
 
 const pathMap: Record<string, ClientCall> = {
   collection: 'collectionById',
