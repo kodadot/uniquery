@@ -21,7 +21,6 @@ import {
   getFields,
   includeBurned,
   optionToQuery,
-  strOf,
 } from './defaults'
 
 class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {

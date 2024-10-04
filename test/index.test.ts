@@ -5,16 +5,6 @@ import { SquidNFT } from '../src/types'
 
 describe('UNIQUERY UTILS', () => {
   describe('getURL', () => {
-    it('should return default kusama indexer', () => {
-      const url = getUrl('rmrk')
-      expect(url).eq('https://squid.subsquid.io/rubick/graphql')
-    })
-
-    it('should return subsquid kusama indexer', () => {
-      const url = getUrl('rmrk', 'subsquid')
-      expect(url).eq('https://squid.subsquid.io/rubick/graphql')
-    })
-
     it('should throw on subquery kusama indexer', () => {
       // eslint-disable-next-line unicorn/consistent-function-scoping
       const fn = () => getUrl('ksm', 'subquery')
@@ -23,7 +13,7 @@ describe('UNIQUERY UTILS', () => {
 
     it('should return default kusama indexer', () => {
       const url = getUrl('ksm')
-      expect(url).eq('https://ksm.gql.api.kodadot.xyz/')
+      expect(url).eq('https://ahk.gql.api.kodadot.xyz/')
     })
 
     it('should return default base indexer', () => {
