@@ -13,7 +13,7 @@ describe('UNIQUERY UTILS', () => {
 
     it('should return default kusama indexer', () => {
       const url = getUrl('ksm')
-      expect(url).eq('https://ahk.gql.api.kodadot.xyz/')
+      expect(url).eq('https://ksm.gql.api.kodadot.xyz/');
     })
 
     it('should return default base indexer', () => {
