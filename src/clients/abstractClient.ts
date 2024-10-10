@@ -2,6 +2,7 @@ import { BaseEvent, GraphLike, GraphQuery, ObjProp, QueryProps } from '../types'
 // Collection, Token
 interface AbstractClient<C, T, E = BaseEvent> {
   collectionById(id: string, fields?: ObjProp<C>): GraphQuery
+  collectionByIdIn(id: string | string[], fields?: ObjProp<C>): GraphQuery
   // collectionListBy(id: string, field: KeyOf<C>, fields?: ObjProp<C>): GraphQuery
   collectionCountByIssuer(issuer: string): GraphQuery
   collectionCountByName(name: string): GraphQuery

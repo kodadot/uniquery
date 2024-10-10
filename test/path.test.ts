@@ -1,5 +1,6 @@
 import { expect, it, describe } from 'vitest'
 import { parsePath, pathToRequest } from '../src/rest/path'
+import { getClient } from '../src'
 
 describe.only('Path utils', () => {
   describe('parse path should', () => {
@@ -20,7 +21,33 @@ describe.only('Path utils', () => {
     })
   })
 
-  describe('path to request', () => {
+  describe('collecion id in', () => {
+    const id = [
+      '0xd9a2c93ba2e9fae10fe762a42ee807bbf95764cc',
+      '0x2f36072129aabb22bd4afffca0640a3e02695925'
+    ]
+
+    it('should do something', () => {
+      const res = pathToRequest('/base/collectionByIdIn/' + id)
+      expect(res.query).not.toBeUndefined()
+    })
+
+    it('should return collection In result when passing string separeted by ,', async () => {
+      const client = getClient('base')
+      const query = client.collectionByIdIn(id.toString())
+      const result = await client.fetch(query)
+      expect(result).not.toBeUndefined()
+    })
+
+    it('should return collection Id In result when passing array', async () => {
+      const client = getClient('base')
+      const query = client.collectionByIdIn(id)
+      const result = await client.fetch(query)
+      expect(result).not.toBeUndefined()
+    })
+  })
+
+  describe('ahk path to request', () => {
     const tests = [
       { input: 'collection/2305670031' },
       { input: 'collectionByIssuer/bXhUWXbffHMJk2FoTriLixXjQY36RPDkX5Tugy5WYSmafJsGi' },
