@@ -20,6 +20,7 @@ import {
   genericCountQuery,
   getFields,
   includeBurned,
+  includeBurnedOption,
   optionToQuery,
 } from './defaults'
 
@@ -362,10 +363,11 @@ class SquidClient implements AbstractClient<SquidCollection, SquidNFT> {
   ): GraphQuery {
     const toQuery = getFields(options?.fields)
     const optionList = optionToQuery(options, true)
+    const burned = includeBurnedOption(options)
     return build(
-      `items: nftEntities(where: {collection: {id_eq: "${id}"}} ${optionList})`,
-      toQuery,
-    )
+      `items: nftEntities(where: {collection: {id_eq: "${id}"} ${burned}} ${optionList})`,
+      toQuery
+    );
   }
 
   itemListForSale(options?: QueryProps<SquidNFT>): GraphQuery {
