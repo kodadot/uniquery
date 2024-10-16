@@ -1,6 +1,6 @@
 import { expect, it, describe } from 'vitest'
 import { parsePath, pathToRequest } from '../src/rest/path'
-import { getClient } from '../src'
+import { extendFields, getClient } from '../src'
 
 describe.only('Path utils', () => {
   describe('parse path should', () => {
@@ -44,6 +44,37 @@ describe.only('Path utils', () => {
       const query = client.collectionByIdIn(id)
       const result = await client.fetch(query)
       expect(result).not.toBeUndefined()
+    })
+  })
+
+  describe('ahp filter burned items', () => {
+    const collectionId = '244'
+    const client = getClient('ahp')
+
+    it('should return only burned items from collection', async () => {
+      const query = client.itemListByCollectionId(collectionId, { burned: true, orderBy: 'blockNumber_ASC', fields: extendFields(['burned']) })
+      const result = await client.fetch(query)
+
+      expect(result).not.toBeUndefined()
+
+      if (result.data) {
+        result.data.items.forEach(element => {
+          expect(element).toHaveProperty('burned', true)
+        })
+      }
+    })
+
+    it('should return all non-burned items from collection', async () => {
+      const query = client.itemListByCollectionId(collectionId, { burned: false, orderBy: 'blockNumber_ASC', fields: extendFields(['burned']) })
+      const result = await client.fetch(query)
+
+      expect(result).not.toBeUndefined()
+
+      if (result.data) {
+        result.data.items.forEach(element => {
+          expect(element).toHaveProperty('burned', false)
+        })
+      }
     })
   })
 
