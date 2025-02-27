@@ -1,12 +1,12 @@
 {
   "name": "@kodadot1/uniquery",
-  "version": "0.7.2-rc.0",
+  "version": "0.7.2-rc.1",
   "description": "Universal GraphQL query builder for KodaDot",
   "repository": "kodadot/uniquery",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "packageManager": "pnpm@9.12.0",
+  "packageManager": "pnpm@10.4.1",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -31,7 +31,7 @@
   "dependencies": {
     "@kodadot1/static": "0.0.7",
     "gql-query-builder": "^3.8.0",
-    "ofetch": "^1.4.0",
+    "ofetch": "^1.4.1",
     "scule": "^1.3.0",
     "ufo": "^1.5.4"
   },
