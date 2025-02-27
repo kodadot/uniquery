@@ -40,6 +40,7 @@ export type GraphLike<T> = { data: T }
 export type QueryProps<T> = QueryOptions & {
   fields?: ObjProp<T>
   burned?: boolean
+  kind?: string
 }
 
 export type AbstractBase = {
@@ -65,8 +66,11 @@ type MetadataEntity = {
 }
 
 export type BaseCollection = AbstractBase & {
+  kind: string
   max: number
   metadata: string
+  nftCount: number
+  supply: null
   symbol: string
   version: string
 }
