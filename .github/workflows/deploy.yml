@@ -7,7 +7,8 @@ jobs:
     name: Deploy
     steps:
       - uses: actions/checkout@v4
-      - run: corepack enable
+      # - run: corepack enable
+      - uses: pnpm/action-setup@v4
       - name: Publish
         uses: actions/setup-node@v4
         with:
