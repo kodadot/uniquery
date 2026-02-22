@@ -33,14 +33,14 @@ describe.only('Path utils', () => {
     })
 
     it('should return collection In result when passing string separeted by ,', async () => {
-      const client = getClient('base')
+      const client = getClient('ksm')
       const query = client.collectionByIdIn(id.toString())
       const result = await client.fetch(query)
       expect(result).not.toBeUndefined()
     })
 
     it('should return collection Id In result when passing array', async () => {
-      const client = getClient('base')
+      const client = getClient('ksm')
       const query = client.collectionByIdIn(id)
       const result = await client.fetch(query)
       expect(result).not.toBeUndefined()
