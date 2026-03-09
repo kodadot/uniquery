@@ -104,13 +104,21 @@ export function ensureOrderBy(orderBy?: OrderBy | OrderBy[]): string {
   return Array.isArray(orderBy) ? stringFromArray(orderBy) : orderBy ?? '[]' // this is a trick to handle undefined
 }
 
-type Burned = '' | `burned_eq: ${false}`
+type Burned = '' | `burned_eq: ${false}` | `burned_eq: ${true}`
 export function includeBurned<T = unknown>(options?: QueryProps<T>): Burned {
   if (options && options.burned) {
     return ''
   }
 
   return 'burned_eq: false'
+}
+
+export function includeBurnedOption<T = unknown>(options?: QueryProps<T>): Burned {
+  if (options && String(options.burned)) {
+    return `burned_eq: ${options.burned}`
+  }
+
+  return ''
 }
 
 export function strOf<T>(value: T): string {
